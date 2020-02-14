@@ -10,8 +10,7 @@ Programa skaičiuoja galutinį balą pagal:
 - Pagal medianą: 0.4 * [namų darbų balų mediana] + 0.6 * [egzamino balas].
 
 Programos pavyzdys:
-Inline-style: 
-![alt text](https://imgur.com/a/jBoulSl "Neskaito 25 ir s.")
+[Neskaito 25 ir s.](https://imgur.com/a/jBoulSl)
 
 Trūksta: 
 - ~~Skaitymo su masyvu.~~

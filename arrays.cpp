@@ -11,36 +11,6 @@ float Final(float avg, int m) {
     return (round(100.0*(0.4*avg + 0.6*m))/100.0); // Rounds to 2 decimal points
 }
 
-void Input(int &m, std::string &name, std::string &lname, int *arr) {
-	std::cout << "Vardas ir pavarde:\n";
-	std:: cin >> name >> lname;
-	std::cout << "Namu darbu balai ir egzamino balas (paskutinis):\n";
-	int in;
-	std::string tstr;
-	std::cin.ignore();
-	std::cin.clear();
-	getline(std::cin, tstr);
-	std::istringstream ss(tstr);
-    while(ss >> in) {
-        if(in <= 10 || in > 0) {
-            n++;
-            int *temp = arr;
-            //delete[] arr;
-            arr = new int[n];
-            for(int i=0; i<n; i++) arr[i]=temp[i];
-            arr[n-1] = in;
-            delete[] temp; /// ar istrina visa masyva?
-        }
-    }
-	if(n>0) {
-        m = arr[n-1];
-        //remove arr[n-1];
-        n--;
-	}
-	else m = 0;
-	/// rodykle i arr issaugo taisingai, bet jos nenusiuncia atgal!
-}
-
 float Average(int *arr, int m) {
     double avg=0;
     for(int i=0; i<n; i++) {
@@ -70,11 +40,38 @@ void Output(int m, std::string name, std::string lname, int *arr) {
 int main()
 {
     std::string name, lname;
-    int m, arr[0];
-    int *p1 = arr;
-    Input(m, name, lname, arr);
-    int *p2 = arr;
-    std::cout << p1 << " " << p2 << std::endl;
+    int m;
+    int *arr = new int[0];
+
+    /// Nesugeba void funkcija nusiusti atgal pakitusios rodykles, tad viskas vyks main.
+    std::cout << "Vardas ir pavarde:\n";
+	std:: cin >> name >> lname;
+	std::cout << "Namu darbu balai ir egzamino balas (paskutinis):\n";
+    int in;
+	std::string tstr;
+	getline(std::cin, tstr); // Su cin.ignore ir cin.clear padejus tarpa neignoruojamas '\n'
+	getline(std::cin, tstr);
+	std::istringstream ss(tstr);
+    while(ss >> in) {
+        if(in <= 10 || in > 0) {
+            n++;
+            int *temp = arr;
+            int *temp1 = arr;
+            //delete[] arr;
+            arr = new int[n];
+            for(int i=0; i<n; i++) arr[i]=temp[i];
+            arr[n-1] = in;
+            delete[] temp; /// ar istrina visa masyva?
+        }
+    }
+    if(n>0) {
+        m = arr[n-1];
+        //delete arr[n-1]; - nezinau kaip istringti paskutini elementa, tad tiesiog paaukoju tuos 4 baitus
+        n--;
+	}
+	else m = 0;
+
+
     Output(m, name, lname, arr);
     return 0;
 }

@@ -13,7 +13,7 @@ Programos pavyzdys:
 
 ![Programos pavyzdys](https://github.com/benas761/obj2/blob/v0.1/cmd.png)
 
-Neskaito 25 ir s.
+Neskaito 25 ir s (GCC kompileris raides paverčia į 0).
 
 Trūksta: 
 - ~~Skaitymo su masyvu.~~

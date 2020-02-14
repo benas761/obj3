@@ -1,5 +1,5 @@
 # obj2
 Trūksta: 
 - Skaitymo su masyvu.
-- Skaitymo funkcijos, kovojančios su vartotoju.
+- __Skaitymo funkcijos, kovojančios su vartotoju.__
 - Vykdymo su keliais mokiniais (techniškai neprašė, bet pavyzdyje rodė su keliais)

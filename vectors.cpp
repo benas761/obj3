@@ -15,11 +15,10 @@ void Input(int &n, int &m, std::string &name, std::string &lname, auto &N) {
 	std::cout << "Namu darbu balai ir egzamino balas (paskutinis):\n";
 	int temp;
 	std::string tstr;
-	std::cin.ignore();
-	std::cin.clear();
+	getline(std::cin, tstr);
 	getline(std::cin, tstr);
 	std::istringstream ss(tstr);
-    while(ss >> temp) if(temp <= 10 || temp >=0)N.push_back(temp);
+    while(ss >> temp) if(temp <= 10 || temp >=0) N.push_back(temp);
 	if(N.size()>0) {
         m = N.back();
         N.pop_back();
@@ -77,7 +76,7 @@ int main()
 {
     std::string name, lname;
     int n, m;
-    std::vector<int> N; // Truksta skaitymo su masyvu
+    std::vector<int> N;
     Input(n, m, name, lname, N);
     Output(n, m, name, lname, N);
     return 0;

@@ -10,7 +10,7 @@ void CreateInput(int n, int m) {
 	string name[] = {
 		"Lisa", "Tom", "Steve", "Karen", "Jimmy", "Tim", "Frank", "Charlie", "Charlotte", "Abus", "Gus", 
 		"Vincent", "Douglas", "Kim", "Jim", "Henry", "Lenny", "Homer", "Kate", "Stacy", "Mary", "Jenny",
-		"Susy", "Quin", "George", "Gin", "Asira", "Amy", "Abigail", "Rhoshandiatellyneshiaunneveshenk"
+		"Susy", "Quin", "George", "Gin", "Asira", "Amy", "Abigail", "Thomas"
 	};
 	string lname[] =  {
 		"Jobs", "Williams", "Smith", "Johnson", "Jones", "Brown", "Davis", "Miller", "Wilson", "Moore",
@@ -31,19 +31,19 @@ void CreateInput(int n, int m) {
 	fr.close();
 }
 
-int InLen() {// Programai laiko kainuoja, bet man sutaupo, atsiprasau.
+int InLen(string input = "Generated.txt") {// Programai laiko kainuoja, bet man sutaupo, atsiprasau.
 	int n = 0;
 	string t;
-	std::ifstream fd("kursiokai.txt");
-	while(getline(fd, t)) n++; // Suskaiciuoja kiek viso mokiniu bus
+	std::ifstream fd(input);
+	while(getline(fd, t)) if(t != "") n++; // Suskaiciuoja kiek viso mokiniu bus
 	n--; //Nereikia pirmos linijos.
 	fd.close();
 	return n;
 }
 
-void Input(int n, stud x[]) {
+void Input(int n, stud x[], string input = "Generated.txt") {
 	string str;
-	std::ifstream fd("kursiokai.txt");
+	std::ifstream fd(input);
 	getline(fd, str); // Praleidzia pirma linija
 	for(int i=0; i<n; i++) {
 		fd >> x[i].name >> x[i].lname;
@@ -63,14 +63,6 @@ void Input(int n, stud x[]) {
 		else x[i].exam = 0;
 	}
 	fd.close();
-}
-
-void InOutput(int n, stud x[]) {
-		for(int i=0; i<n; i++) {
-		cout << setw(13) << std::left << x[i].name << setw(13) << std::left << x[i].lname << " ";
-		for(int j=0; j<x[i].n; j++) cout << setw(5) << x[i].nd[j];
-		cout << setw(5) << x[i].exam << endl;
-	}
 }
 
 float Final(float avg, int m) {
@@ -105,10 +97,25 @@ void Output(int n, stud x[]) {
 	}
 }
 
+bool cmpr(stud a, stud b) {
+    if (a.name != b.name)
+        return a.name < b.name;
+    return a.lname < b.lname;
+}
+
+void InOutput(int n, stud x[]) {
+		for(int i=0; i<n; i++) {
+		cout << setw(13) << std::left << x[i].name << setw(13) << std::left << x[i].lname << " ";
+		for(int j=0; j<x[i].n; j++) cout << setw(5) << x[i].nd[j];
+		cout << setw(5) << x[i].exam << endl;
+	}
+}
+
 int main() {
-	const int n = InLen();
+	const int n = InLen("kursiokai.txt");
 	stud x[n];
-	//CreateInput(25, 5);
-	Input(n, x);
-	Output(n, x);
+	CreateInput(25, 5); // Kiek mokiniu, kiek namu darbu
+	Input(n, x, "kursiokai.txt");
+	std::sort(x, x+n, cmpr);
+	InOutput(n, x);
 }

@@ -4,6 +4,7 @@
 #include <sstream>
 #include <iomanip>
 #include <random>
+#include <ctime>
 
 using std::string;
 using std::vector;

@@ -2,29 +2,31 @@
 
 void CreateInput(int n, int m) {
 	int num = 32;
-	std::mt19937 mt0(4821);
-	std::mt19937 mt1(5932);
+	std::random_device rd;
+	std::mt19937 mt0(rd());
+	std::mt19937 mt1(rd());
 	std::uniform_int_distribution<int> names(0, num-1);
 	std::uniform_int_distribution<int> grades(1, 10);
-	std::enum name {
+	string name[] = {
 		"Lisa", "Tom", "Steve", "Karen", "Jimmy", "Tim", "Frank", "Charlie", "Charlotte", "Abus", "Gus", 
 		"Vincent", "Douglas", "Kim", "Jim", "Henry", "Lenny", "Homer", "Kate", "Stacy", "Mary", "Jenny",
 		"Susy", "Quin", "George", "Gin", "Asira", "Amy", "Abigail", "Rhoshandiatellyneshiaunneveshenk"
 	};
-	std::enum lname {
+	string lname[] =  {
 		"Jobs", "Williams", "Smith", "Johnson", "Jones", "Brown", "Davis", "Miller", "Wilson", "Moore",
 		"Taylor", "Anderson", "Thoas", "Jackson", "White", "Black", "Pink", "Harris", "Martin", "Thompson",
 		"Garcia", "Martinez", "Robinson", "Clark", "Lewis", "Lee", "Walker", "Hall", "Allen", "Young", 
 		"King", "Kernel"
 	};
 	std::ofstream fr("Generated.txt");
-	fr << setw(32) << std::left << "Vardas" << setw(32) << std::left << "Pavarde";
-	for(int j = 0; j < m+1; j++) fr << setw(4) << "nd" << j;
+	fr << setw(33) << std::left << "Vardas" << setw(30) << std::left << "Pavarde";
+	for(int j = 0; j < m; j++) fr << setw(3) << std::right << j+1 << "nd";
 	fr << setw(5) << "egz." << endl;
 	for(int i=0; i<n; i++) {
-		fr << setw(32) << std::left << name(names(mt0));
-		fr << setw(32) << std::left << lname(names(mt0));
+		fr << setw(33) << std::left <<  name[names(mt0)];
+		fr << setw(33) << std::left << lname[names(mt0)];
 		for(int j = 0; j < m+1; j++) fr << setw(5) << grades(mt1);
+		fr << endl;
 	}
 	fr.close();
 }
@@ -71,10 +73,42 @@ void InOutput(int n, stud x[]) {
 	}
 }
 
+float Final(float avg, int m) {
+	return (round(100.0*(0.4*avg + 0.6*m))/100.0); // Rounds to 2 decimal points
+}
+
+float Average(stud x) {
+    double avg=0;
+    for(int i=0; i<x.n; i++) {
+        avg += x.nd[i];
+    }
+    return Final(avg/x.n, x.exam);
+}
+
+float Median(stud x) {
+    int i = x.n/2 - 1;
+    if(x.n%2 == 0) {
+        float t = (x.nd[i]+x.nd[i+1])/2.0;
+        return(Final(t, x.exam));
+    }
+    else return(Final(x.nd[i], x.exam));
+}
+
+void Output(int n, stud x[]) {
+	cout<<"Pavarde     Vardas      Galutinis (Vid.) / Galutinis (Med.)\n";
+    cout<<"------------------------------------------------------------\n";
+    for(int i=0; i<n; i++) {
+	    cout<<setw(12)<<std::left<<x[i].name<<setw(12)<<std::left<<x[i].lname;
+		if(n == 0)
+	    	 cout<<std::setw(18)<<std::left<<Final(0, x[i].exam)<<endl;
+		else cout<<std::setw(18)<<std::left<<Average(x[i])<<setw(16)<<std::left<<Median(x[i])<<endl;
+	}
+}
+
 int main() {
 	const int n = InLen();
 	stud x[n];
-	CreateInput(25, 5);
+	//CreateInput(25, 5);
 	Input(n, x);
-	InOutput(n, x);
+	Output(n, x);
 }

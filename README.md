@@ -3,6 +3,7 @@
 v0.2 pakeitimai:
 - Dirba su mokinių sąrašu, kuriame gali būti skirtingas kiekvieno mokinio padarytų namų darbų kiekis.
 - Išveda pagal vardą (jei vardai vienodi, pavardę) surūšiuotą mokinių galutinių balų sąrašą.
+- Jei nėra kursiokai.txt failo sugeneruoja naują failą Generated.txt, su kuriuo toliau vykdo operacijas.
 
 Skaitymui:
 - Įvesti vardą ir pavardę. Spausti enter.

@@ -1,5 +1,9 @@
 # obj2
 
+v0.2 pakeitimai:
+- Dirba su mokinių sąrašu, kuriame gali būti skirtingas kiekvieno mokinio padarytų namų darbų kiekis.
+- Išveda pagal vardą (jei vardai vienodi, pavardę) surūšiuotą mokinių galutinių balų sąrašą.
+
 Skaitymui:
 - Įvesti vardą ir pavardę. Spausti enter.
 - Įvesti visus pažymius __vienoje eilutėje__. Egzamino balas paskutinis.
@@ -14,8 +18,3 @@ Programos pavyzdys:
 ![Programos pavyzdys](https://github.com/benas761/obj2/blob/v0.1/cmd.png)
 
 Neskaito 25 ir s (GCC kompileris raides paverčia į 0).
-
-Trūksta: 
-- ~~Skaitymo su masyvu.~~
-- ~~Skaitymo funkcijos, kovojančios su vartotoju.~~
-- Vykdymo su keliais mokiniais (techniškai neprašė, bet pavyzdyje rodė su keliais)

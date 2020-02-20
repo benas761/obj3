@@ -87,13 +87,13 @@ float Median(stud x) {
 }
 
 void Output(int n, stud x[]) {
-	cout<<"Pavarde     Vardas      Galutinis (Vid.) / Galutinis (Med.)\n";
+	cout<< setw(18) << std::left << "Vardas" << setw(18) << std::left << "Pavarde" << "Galutinis (Vid.) / Galutinis (Med.)\n";
     cout<<"------------------------------------------------------------\n";
     for(int i=0; i<n; i++) {
-	    cout<<setw(12)<<std::left<<x[i].name<<setw(12)<<std::left<<x[i].lname;
+	    cout<<setw(18)<<std::left<<x[i].name<<setw(18)<<std::left<<x[i].lname;
 		if(n == 0)
-	    	 cout<<std::setw(18)<<std::left<<Final(0, x[i].exam)<<endl;
-		else cout<<std::setw(18)<<std::left<<Average(x[i])<<setw(16)<<std::left<<Median(x[i])<<endl;
+	    	 cout<<std::setw(19)<<std::left<<Final(0, x[i].exam)<<endl;
+		else cout<<std::setw(19)<<std::left<<Average(x[i])<<setw(16)<<std::left<<Median(x[i])<<endl;
 	}
 }
 

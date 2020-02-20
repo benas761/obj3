@@ -8,14 +8,14 @@ void CreateInput(int n, int m) {
 	std::uniform_int_distribution<int> names(0, num-1);
 	std::uniform_int_distribution<int> grades(1, 10);
 	string name[] = {
-		"Lisa", "Tom", "Steve", "Karen", "Jimmy", "Tim", "Frank", "Charlie", "Charlotte", "Abus", "Gus", 
+		"Lisa", "Tom", "Steve", "Karen", "Jimmy", "Tim", "Frank", "Charlie", "Charlotte", "Abus", "Gus",
 		"Vincent", "Douglas", "Kim", "Jim", "Henry", "Lenny", "Homer", "Kate", "Stacy", "Mary", "Jenny",
 		"Susy", "Quin", "George", "Gin", "Asira", "Amy", "Abigail", "Thomas"
 	};
 	string lname[] =  {
 		"Jobs", "Williams", "Smith", "Johnson", "Jones", "Brown", "Davis", "Miller", "Wilson", "Moore",
 		"Taylor", "Anderson", "Thoas", "Jackson", "White", "Black", "Pink", "Harris", "Martin", "Thompson",
-		"Garcia", "Martinez", "Robinson", "Clark", "Lewis", "Lee", "Walker", "Hall", "Allen", "Young", 
+		"Garcia", "Martinez", "Robinson", "Clark", "Lewis", "Lee", "Walker", "Hall", "Allen", "Young",
 		"King", "Kernel"
 	};
 	std::ofstream fr("Generated.txt");
@@ -103,14 +103,6 @@ bool cmpr(stud a, stud b) {
     return a.lname < b.lname;
 }
 
-void InOutput(int n, stud x[]) {
-		for(int i=0; i<n; i++) {
-		cout << setw(13) << std::left << x[i].name << setw(13) << std::left << x[i].lname << " ";
-		for(int j=0; j<x[i].n; j++) cout << setw(5) << x[i].nd[j];
-		cout << setw(5) << x[i].exam << endl;
-	}
-}
-
 bool youAreHere() {
     std::ifstream infile("kursiokai.txt");
     return infile.good();
@@ -129,9 +121,11 @@ int main() {
 	const int n = InLen(input);
 	if(n == -1) cout << "Papildykite kursiokai.txt faila arba ji istrinkite" << endl;
 	else {
-		stud x[n];
+		stud *x = new stud[n];
 		Input(n, x, input);
 		std::sort(x, x+n, cmpr);
-		InOutput(n, x);
+		Output(n, x);
+		delete[] x;
 	}
+	return 0;
 }

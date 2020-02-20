@@ -111,11 +111,27 @@ void InOutput(int n, stud x[]) {
 	}
 }
 
+bool youAreHere() {
+    std::ifstream infile("kursiokai.txt");
+    return infile.good();
+}
+
+string whichFile() {
+	if (youAreHere()) return("kursiokai.txt");
+	else {
+		CreateInput(25, 5); // Kiek mokiniu, kiek namu darbu
+		return("Generated.txt");
+	}
+}
+
 int main() {
-	const int n = InLen("kursiokai.txt");
-	stud x[n];
-	CreateInput(25, 5); // Kiek mokiniu, kiek namu darbu
-	Input(n, x, "kursiokai.txt");
-	std::sort(x, x+n, cmpr);
-	InOutput(n, x);
+	string input = whichFile(); // Tikrina ar yra kursiokai.txt failas
+	const int n = InLen(input);
+	if(n == -1) cout << "Papildykite kursiokai.txt faila arba ji istrinkite" << endl;
+	else {
+		stud x[n];
+		Input(n, x, input);
+		std::sort(x, x+n, cmpr);
+		InOutput(n, x);
+	}
 }

@@ -56,11 +56,13 @@ void Input(int n, stud x[], string input = "Generated.txt") {
 	            x[i].n++;
 	            x[i].nd.push_back(in);
 	        }
-	        else throw std::runtime_error("Dirbama tik su sveikais skaiciais kaip pazymiais. Patikrinkite ivesti.");
+	        else throw std::runtime_error("\nDirbama tik su sveikais skaiciais tarp 1 ir 10. Patikrinkite ivesti.\n");
 	    }
-	    if(n>0) {
+	    if(x[i].n>0) {
 	    	x[i].exam = x[i].nd.back();
 	    	x[i].nd.pop_back();
+	    	x[i].n--;
+            if(x[i].n==0) { x[i].nd.push_back(0); x[i].n++; }
 		}
 		else x[i].exam = 0;
 	}

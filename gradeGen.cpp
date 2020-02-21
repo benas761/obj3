@@ -6,7 +6,6 @@ float Final(float avg, float m) {
 
 float Average(stud x) {
     double avg=0;
-    cout << "hello!" << endl;
     try {
         for(int i=0; i<x.n; i++) {
             avg += x.nd[i];

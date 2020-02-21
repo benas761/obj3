@@ -52,10 +52,11 @@ void Input(int n, stud x[], string input = "Generated.txt") {
 		for(int i=0; i<str.length(); i++) if(str[i]==',') str[i]='.';
         std::istringstream ss(str);
 	    while(ss >> in) {
-	        if(in <= 10 || in > 0) {
+	        if(in <= 10 && in > 0) {
 	            x[i].n++;
 	            x[i].nd.push_back(in);
 	        }
+	        else throw std::runtime_error("Dirbama tik su sveikais skaiciais kaip pazymiais. Patikrinkite ivesti.");
 	    }
 	    if(n>0) {
 	    	x[i].exam = x[i].nd.back();

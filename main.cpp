@@ -9,6 +9,7 @@ int main() {
 		Input(n, x, input);
 		std::sort(x, x+n, cmpr);
 		Output(n, x);
+		Output2file(n, x);
 		delete[] x;
 	} catch(std::exception& e) {
 		cout << "Papildykite kursiokai.txt faila arba ji istrinkite" << endl;

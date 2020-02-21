@@ -77,6 +77,19 @@ void Output(int n, stud x[]) {
 	}
 }
 
+void Output2file(int n, stud x[]) {
+	std::ofstream fr("results.txt");
+	fr << setw(18) << std::left << "Vardas" << setw(18) << std::left << "Pavarde" << "Galutinis (Vid.) / Galutinis (Med.)\n";
+    fr <<"------------------------------------------------------------\n";
+    for(int i=0; i<n; i++) {
+	    fr <<setw(18)<<std::left<<x[i].name<<setw(18)<<std::left<<x[i].lname;
+		if(n == 0)
+	    	 fr <<std::setw(19)<<std::left<<Final(0, x[i].exam)<<endl;
+		else fr <<std::setw(19)<<std::left<<Average(x[i])<<setw(16)<<std::left<<Median(x[i])<<endl;
+	}
+	fr.close();
+}
+
 bool cmpr(stud a, stud b) {
     if (a.name != b.name)
         return a.name < b.name;

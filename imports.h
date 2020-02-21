@@ -16,16 +16,18 @@ using std::setw;
 
 struct stud {
 	string name, lname;
-	int n = 0, exam;
+	int n = 0;
+	float exam;
 	std::vector<int> nd;
 };
 
 void CreateInput(int, int);
 int InLen(string);
 void Input(int, stud*, string);
-float Final(float, int);
+float Final(float, float);
 float Average(stud);
 float Median(stud);
 void Output(int, stud*);
+void Output2file(int, stud*);
 bool cmpr(stud, stud);
 string whichFile();

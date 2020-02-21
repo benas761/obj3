@@ -1,13 +1,20 @@
 #include "imports.h"
 
-float Final(float avg, int m) {
+float Final(float avg, float m) {
 	return (round(100.0*(0.4*avg + 0.6*m))/100.0); // Rounds to 2 decimal points
 }
 
 float Average(stud x) {
     double avg=0;
-    for(int i=0; i<x.n; i++) {
-        avg += x.nd[i];
+    cout << "hello!" << endl;
+    try {
+        for(int i=0; i<x.n; i++) {
+            avg += x.nd[i];
+        }
+    } // Negaudo segmentation klaidu!
+    catch(std::exception& e) {
+        avg = 0;
+        cout << "Netinkamai apskaiciuotas vidurkis!\n";
     }
     return Final(avg/x.n, x.exam);
 }

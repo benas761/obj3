@@ -3,6 +3,8 @@
 v0.3 pakeitimai:
 - Pridėtas antraštės failas.
 - Funkcijos perkeltos į 2 .cpp failus. inOut.cpp - išvesčiai, gradeGen.cpp - vidurkiui ir medianai.
+Programa raides, simbolius ir kitus netinkamus pazymiu formatus ignoruoja.
+Pazymiuose kablelius pavercia i taskus, bet viska, kas eina po tasko ignoriuoja (dirba su int).
 
 Skaitymui:
 - Sukurti failą kursiokai.txt. Pirma eilutė ignoruojama, tad duomenis pradėti rašyti nuo antros eilutės.
@@ -18,5 +20,3 @@ Programa skaičiuoja galutinį balą pagal:
 Programos pavyzdys:
 
 ![Programos pavyzdys](https://github.com/benas761/obj2/blob/v0.1/cmd.png)
-
-Neskaito 25 ir s (GCC kompileris raides paverčia į 0).

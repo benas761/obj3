@@ -8,14 +8,14 @@ void CreateInput(int n, int m) {
 	std::uniform_int_distribution<int> names(0, num-1);
 	std::uniform_int_distribution<int> grades(1, 10);
 	string name[] = {
-		"Lisa", "Tom", "Steve", "Karen", "Jimmy", "Tim", "Frank", "Charlie", "Charlotte", "Abus", "Gus", 
+		"Lisa", "Tom", "Steve", "Karen", "Jimmy", "Tim", "Frank", "Charlie", "Charlotte", "Abus", "Gus",
 		"Vincent", "Douglas", "Kim", "Jim", "Henry", "Lenny", "Homer", "Kate", "Stacy", "Mary", "Jenny",
 		"Susy", "Quin", "George", "Gin", "Asira", "Amy", "Abigail", "Thomas"
 	};
 	string lname[] =  {
 		"Jobs", "Williams", "Smith", "Johnson", "Jones", "Brown", "Davis", "Miller", "Wilson", "Moore",
 		"Taylor", "Anderson", "Thoas", "Jackson", "White", "Black", "Pink", "Harris", "Martin", "Thompson",
-		"Garcia", "Martinez", "Robinson", "Clark", "Lewis", "Lee", "Walker", "Hall", "Allen", "Young", 
+		"Garcia", "Martinez", "Robinson", "Clark", "Lewis", "Lee", "Walker", "Hall", "Allen", "Young",
 		"King", "Kernel"
 	};
 	std::ofstream fr("Generated.txt");
@@ -78,6 +78,7 @@ float Average(stud x) {
 }
 
 float Median(stud x) {
+	sort(x.nd.begin(), x.nd.end());
     int i = x.n/2 - 1;
     if(x.n%2 == 0) {
         float t = (x.nd[i]+x.nd[i+1])/2.0;
@@ -87,13 +88,13 @@ float Median(stud x) {
 }
 
 void Output(int n, stud x[]) {
-	cout<<"Pavarde     Vardas      Galutinis (Vid.) / Galutinis (Med.)\n";
+	cout<< setw(18) << std::left << "Vardas" << setw(18) << std::left << "Pavarde" << "Galutinis (Vid.) / Galutinis (Med.)\n";
     cout<<"------------------------------------------------------------\n";
     for(int i=0; i<n; i++) {
-	    cout<<setw(12)<<std::left<<x[i].name<<setw(12)<<std::left<<x[i].lname;
+	    cout<<setw(18)<<std::left<<x[i].name<<setw(18)<<std::left<<x[i].lname;
 		if(n == 0)
-	    	 cout<<std::setw(18)<<std::left<<Final(0, x[i].exam)<<endl;
-		else cout<<std::setw(18)<<std::left<<Average(x[i])<<setw(16)<<std::left<<Median(x[i])<<endl;
+	    	 cout<<std::setw(19)<<std::left<<Final(0, x[i].exam)<<endl;
+		else cout<<std::setw(19)<<std::left<<Average(x[i])<<setw(16)<<std::left<<Median(x[i])<<endl;
 	}
 }
 
@@ -101,14 +102,6 @@ bool cmpr(stud a, stud b) {
     if (a.name != b.name)
         return a.name < b.name;
     return a.lname < b.lname;
-}
-
-void InOutput(int n, stud x[]) {
-		for(int i=0; i<n; i++) {
-		cout << setw(13) << std::left << x[i].name << setw(13) << std::left << x[i].lname << " ";
-		for(int j=0; j<x[i].n; j++) cout << setw(5) << x[i].nd[j];
-		cout << setw(5) << x[i].exam << endl;
-	}
 }
 
 bool youAreHere() {
@@ -129,9 +122,11 @@ int main() {
 	const int n = InLen(input);
 	if(n == -1) cout << "Papildykite kursiokai.txt faila arba ji istrinkite" << endl;
 	else {
-		stud x[n];
+		stud *x = new stud[n];
 		Input(n, x, input);
 		std::sort(x, x+n, cmpr);
-		InOutput(n, x);
+		Output(n, x);
+		delete[] x;
 	}
+	return 0;
 }

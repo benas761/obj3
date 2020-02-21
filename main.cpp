@@ -78,6 +78,7 @@ float Average(stud x) {
 }
 
 float Median(stud x) {
+	sort(x.nd.begin(), x.nd.end());
     int i = x.n/2 - 1;
     if(x.n%2 == 0) {
         float t = (x.nd[i]+x.nd[i+1])/2.0;

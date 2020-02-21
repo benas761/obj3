@@ -5,6 +5,7 @@
 #include <iomanip>
 #include <random>
 #include <ctime>
+#include <algorithm>
 
 using std::string;
 using std::vector;

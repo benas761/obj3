@@ -71,7 +71,7 @@ void Input(int n, stud x[], string input = "Generated.txt") {
 
 void Output(int n, stud x[]) {
 	cout<< setw(18) << std::left << "Vardas" << setw(18) << std::left << "Pavarde" << "Galutinis (Vid.) / Galutinis (Med.)\n";
-    cout<<"------------------------------------------------------------\n";
+    cout<<"----------------------------------------------------------------------\n";
     for(int i=0; i<n; i++) {
 	    cout<<setw(18)<<std::left<<x[i].name<<setw(18)<<std::left<<x[i].lname;
 		if(n == 0)

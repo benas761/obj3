@@ -2,7 +2,7 @@
 
 int main() {
 	timer fileGen;
-	string input = whichFile(); // Tikrina ar yra kursiokai.txt failas
+	string input = whichFile(1000000); // Tikrina ar yra kursiokai.txt failas. Jeigu nera, kokio dydzio testo faila sukurti.
 	fileGen.stop();
 	const int n = InLen(input);
 	try {
@@ -22,9 +22,8 @@ int main() {
         Output2file(g, good, "Patenkinami.txt");
 		Output2file(b, bad,  "Nepatenkinami.txt");
 		out.stop();
-		cout<<"Generavimas: "<<fileGen.duration()<<"s.\nSkaitymas: "<<fileRead.duration()<<"s.\nSkaiciavimas: "<<calc.duration()<<"s.\nAtrinkimas: "<<pick.duration()<<"s.\nRasymas:"<<out.duration()<<"s.\n";
-		//Output(g, good);
-		//Output(b, bad);
+		cout<<"Generavimas: "<<fileGen.duration()<<"s.\nSkaitymas: "<<fileRead.duration()<<"s.\nSkaiciavimas: "<<calc.duration()<<"s.\nAtrinkimas: ";
+		cout<<pick.duration()<<"s.\nRasymas:"<<out.duration()<<"s.\nViso: "<<fileGen.duration()+fileRead.duration()+calc.duration()+pick.duration()<<"s.\n";
 	} catch(std::exception& e) {
 		cout << "Papildykite kursiokai.txt faila arba ji istrinkite" << endl;
 	}

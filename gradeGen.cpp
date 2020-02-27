@@ -22,7 +22,7 @@ float Median(stud x) {
     else return(Final(x.nd[i], x.exam));
 }
 
-void AssignGrades(int n, stud x[]) {
+void AssignGrades(int n, stud x[]) { // merge w/ pick?
     for(int i=0; i<n; i++) {
         x[i].avg = Average(x[i]);
         x[i].medAvg = Median(x[i]);

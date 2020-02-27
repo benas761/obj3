@@ -4,23 +4,20 @@ void CreateInput(int n, int m) { // pakeista i sablona
 	std::random_device rd;
 	std::mt19937 mt0(rd());
 	std::uniform_int_distribution<int> grades(1, 10);
-	std::ofstream fr("1000.txt");
+	std::ofstream fr("generated.txt"); // one change only pls
 	fr << setw(33) << std::left << "Vardas" << setw(30) << std::left << "Pavarde";
 	for(int j = 0; j < m; j++) fr << setw(3) << std::right << j+1 << "nd";
 	fr << setw(5) << "egz." << endl;
 	for(int i=1; i<=n; i++) {
-		//printf("Vardas%33d Pavarde%33d", i, i);
 		fr << "Vardas" << setw(27) << std::left << i;
 		fr << "Pavarde" << setw(26) << std::left << i;
-		//fr << setw(33) << std::left <<  name[names(mt0)];
-		//fr << setw(33) << std::left << lname[names(mt0)];
 		for(int j = 0; j < m+1; j++) fr << setw(5) << grades(mt0);
 		fr << endl;
 	}
 	fr.close();
 }
 
-int InLen(string input = "1000.txt") {// Programai laiko kainuoja, bet man sutaupo, atsiprasau.
+int InLen(string input = "generated.txt") {// Programai laiko kainuoja, bet man sutaupo, atsiprasau.
 	int n = 0;
 	string t;
 	std::ifstream fd(input);
@@ -30,7 +27,7 @@ int InLen(string input = "1000.txt") {// Programai laiko kainuoja, bet man sutau
 	return n;
 }
 
-void Input(int n, stud x[], string input = "1000.txt") {
+void Input(int n, stud x[], string input = "generated.txt") {
 	string str;
 	std::ifstream fd(input);
 	getline(fd, str); // Praleidzia pirma linija
@@ -82,15 +79,13 @@ bool cmpr(stud a, stud b) {
     return a.lname < b.lname;
 }
 
-bool youAreHere() {
-    std::ifstream infile("kursiokai.txt");
-    return infile.good();
-}
-
-string whichFile() {
-	if (youAreHere()) return("kursiokai.txt");
+string whichFile(int n) {
+	string inpf = "kursiokai.txt";
+	std::ifstream infile(inpf);
+	if (infile.good()) { infile.close(); return(inpf); }
 	else {
-		CreateInput(1000, 5); // Kiek mokiniu, kiek namu darbu
-		return("1000.txt");
+		infile.close();
+		CreateInput(n, 5); // Kiek mokiniu, kiek namu darbu
+		return("generated.txt");
 	}
 }

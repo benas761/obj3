@@ -43,4 +43,4 @@ void Pick(stud*, int, vector<stud>&, vector<stud>&, int&, int&);
 void Output(int, vector<stud>);
 void Output2file(int, vector<stud>, string);
 bool cmpr(stud, stud);
-string whichFile();
+string whichFile(int);

@@ -11,7 +11,7 @@ void CreateInput(int n, int m) { // pakeista i sablona
 	for(int i=1; i<=n; i++) {
 		//printf("Vardas%33d Pavarde%33d", i, i);
 		fr << "Vardas" << setw(27) << std::left << i;
-		fr << "Pavarde" << setw(26) << std::left << i; 
+		fr << "Pavarde" << setw(26) << std::left << i;
 		//fr << setw(33) << std::left <<  name[names(mt0)];
 		//fr << setw(33) << std::left << lname[names(mt0)];
 		for(int j = 0; j < m+1; j++) fr << setw(5) << grades(mt0);
@@ -20,7 +20,7 @@ void CreateInput(int n, int m) { // pakeista i sablona
 	fr.close();
 }
 
-int InLen(string input = "Generated.txt") {// Programai laiko kainuoja, bet man sutaupo, atsiprasau.
+int InLen(string input = "1000.txt") {// Programai laiko kainuoja, bet man sutaupo, atsiprasau.
 	int n = 0;
 	string t;
 	std::ifstream fd(input);
@@ -30,7 +30,7 @@ int InLen(string input = "Generated.txt") {// Programai laiko kainuoja, bet man 
 	return n;
 }
 
-void Input(int n, stud x[], string input = "Generated.txt") {
+void Input(int n, stud x[], string input = "1000.txt") {
 	string str;
 	std::ifstream fd(input);
 	getline(fd, str); // Praleidzia pirma linija
@@ -58,35 +58,22 @@ void Input(int n, stud x[], string input = "Generated.txt") {
 	fd.close();
 }
 
-void Output(int n, stud x[]) {
-	cout<< setw(18) << std::left << "Vardas" << setw(18) << std::left << "Pavarde" << "Galutinis (Vid.) / Galutinis (Med.)\n";
-    cout<<"----------------------------------------------------------------------\n";
-    for(int i=0; i<n; i++) {
-	    cout<<setw(18)<<std::left<<x[i].name<<setw(18)<<std::left<<x[i].lname;
-		if(n == 0)
-	    	 cout<<std::setw(19)<<std::left<<Final(0, x[i].exam)<<endl;
-		else cout<<std::setw(19)<<std::left<<Average(x[i])<<setw(16)<<std::left<<Median(x[i])<<endl;
+void Output(int n, vector<stud> x) {
+	cout << setw(18) << std::left << "Vardas" << setw(18) << std::left << "Pavarde" << "Galutinis (Vid.) / Galutinis (Med.)\n" <<"------------------------------------------------------------\n";
+	for(int i=0; i<n; i++) {
+		cout <<setw(18)<<std::left<<x[i].name<<setw(18)<<std::left<<x[i].lname;
+		cout <<std::setw(19)<<std::left<<x[i].avg<<setw(16)<<std::left<<x[i].medAvg<<endl;
 	}
 }
 
-void Output2file(int n, stud x[]) {
-	std::ofstream bad("nepatenkinami.txt");
-	std::ofstream good("patenkinami.txt");
-	bad << setw(18) << std::left << "Vardas" << setw(18) << std::left << "Pavarde" << "Galutinis (Vid.) / Galutinis (Med.)\n" <<"------------------------------------------------------------\n";
-    good << setw(18) << std::left << "Vardas" << setw(18) << std::left << "Pavarde" << "Galutinis (Vid.) / Galutinis (Med.)\n" <<"------------------------------------------------------------\n";
-    for(int i=0; i<n; i++) {
-    	float avg = Average(x[i]);
-	    if(avg >= 5.0) {
-	    	good <<setw(18)<<std::left<<x[i].name<<setw(18)<<std::left<<x[i].lname;
-			good <<std::setw(19)<<std::left<<avg<<setw(16)<<std::left<<Median(x[i])<<endl;
-		}
-		else {
-	    	bad <<setw(18)<<std::left<<x[i].name<<setw(18)<<std::left<<x[i].lname;
-			bad <<std::setw(19)<<std::left<<avg<<setw(16)<<std::left<<Median(x[i])<<endl;
-		}
+void Output2file(int n, vector<stud> x, string out) {
+	std::ofstream fr(out);
+	fr << setw(18) << std::left << "Vardas" << setw(18) << std::left << "Pavarde" << "Galutinis (Vid.) / Galutinis (Med.)\n" <<"------------------------------------------------------------\n";
+	for(int i=0; i<n; i++) {
+		fr <<setw(18)<<std::left<<x[i].name<<setw(18)<<std::left<<x[i].lname;
+		fr <<std::setw(19)<<std::left<<x[i].avg<<setw(16)<<std::left<<x[i].medAvg<<endl;
 	}
-	good.close();
-	bad.close();
+	fr.close();
 }
 
 bool cmpr(stud a, stud b) {

@@ -38,17 +38,13 @@ void Input(int n, stud x[], string input = "generated.txt") {
 		for(int i=0; i<str.length(); i++) if(str[i]==',') str[i]='.';
         std::istringstream ss(str);
 	    while(ss >> in) {
-	        if(in <= 10 && in > 0) {
-	            x[i].n++;
-	            x[i].nd.push_back(in);
-	        }
+	        if(in <= 10 && in > 0) x[i].nd.push_back(in);
 	        else throw std::runtime_error("\nDirbama tik su sveikais skaiciais tarp 1 ir 10. Patikrinkite ivesti.\n");
 	    }
-	    if(x[i].n>0) {
+	    if(x[i].nd.size()>0) {
 	    	x[i].exam = x[i].nd.back();
 	    	x[i].nd.pop_back();
-	    	x[i].n--;
-            if(x[i].n==0) { x[i].nd.push_back(0); x[i].n++; }
+            if(x[i].nd.size()==0) x[i].nd.push_back(0);
 		}
 		else x[i].exam = 0;
 	}

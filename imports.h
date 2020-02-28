@@ -42,5 +42,5 @@ void AssignGrades(int, stud*);
 void Pick(stud*, int, vector<stud>&, vector<stud>&, int&, int&);
 void Output(int, vector<stud>);
 void Output2file(int, vector<stud>, string);
-bool cmpr(stud, stud);
+bool compareByName(stud, stud);
 string whichFile(int);

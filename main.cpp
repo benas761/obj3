@@ -2,7 +2,7 @@
 
 int main() {
 	timer fileGen;
-	string input = whichFile(1000000); // Tikrina ar yra kursiokai.txt failas. Jeigu nera, kokio dydzio testo faila sukurti.
+	string input = whichFile(100000); // Tikrina ar yra kursiokai.txt failas. Jeigu nera, kokio dydzio testo faila sukurti.
 	fileGen.stop();
 	const int n = InLen(input);
 	try {
@@ -16,6 +16,7 @@ int main() {
 		timer pick;
 		std::vector<stud> good, bad;
 		int g, b;
+		std::sort(x, x+n, compareByName);
 		Pick(x, n, good, bad, g, b);
 		pick.stop();
 		timer out;

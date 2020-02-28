@@ -73,7 +73,7 @@ void Output2file(int n, vector<stud> x, string out) {
 	fr.close();
 }
 
-bool cmpr(stud a, stud b) {
+bool compareByName(stud a, stud b) {
     if (a.name != b.name)
         return a.name < b.name;
     return a.lname < b.lname;

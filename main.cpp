@@ -31,36 +31,29 @@ void CreateInput(int n, int m) {
 	fr.close();
 }
 
-int InLen(string input = "Generated.txt") {// Programai laiko kainuoja, bet man sutaupo, atsiprasau.
-	int n = 0;
-	string t;
-	std::ifstream fd(input);
-	while(getline(fd, t)) if(t != "") n++; // Suskaiciuoja kiek viso mokiniu bus
-	n--; //Nereikia pirmos linijos.
-	fd.close();
-	return n;
-}
-
-void Input(int n, stud x[], string input = "Generated.txt") {
-	string str;
+void Input(vector<stud> &x, string input = "Generated.txt") {
+	string str; stud temp;
 	std::ifstream fd(input);
 	getline(fd, str); // Praleidzia pirma linija
-	for(int i=0; i<n; i++) {
-		fd >> x[i].name >> x[i].lname;
-	    int in;
-		getline(fd, str);
-        std::istringstream ss(str);
-	    while(ss >> in) {
-	        if(in <= 10 || in > 0) {
-	            x[i].n++;
-	            x[i].nd.push_back(in);
-	        }
-	    }
-	    if(n>0) {
-	    	x[i].exam = x[i].nd.back();
-	    	x[i].nd.pop_back();
+	while(getline(fd, str)) {
+		x.push_back(temp);
+		std::istringstream ss(str);
+		ss >> x.back().name >> x.back().lname;
+		int in;
+	    while(ss >> in) if(in <= 10 || in > 0) x.back().nd.push_back(in);
+	    if(x.back().nd.size() > 1) {
+	    	x.back().exam = x.back().nd.back();
+	    	x.back().nd.pop_back();
 		}
-		else x[i].exam = 0;
+		else if(x.back().nd.size() == 0) {
+			x.back().exam = x.back().nd.back();
+			x.back().nd.back() = 0;
+		}
+		else {
+			x.back().exam = 0;
+			x.back().nd.back() = 0;
+		}
+
 	}
 	fd.close();
 }
@@ -70,31 +63,26 @@ float Final(float avg, int m) {
 }
 
 float Average(stud x) {
-    double avg=0;
-    for(int i=0; i<x.n; i++) {
-        avg += x.nd[i];
-    }
-    return Final(avg/x.n, x.exam);
+    double avg = std::accumulate(x.nd.begin(), x.nd.end(), 0.0)/x.nd.size();
+    return Final(avg/x.nd.size(), x.exam);
 }
 
 float Median(stud x) {
 	sort(x.nd.begin(), x.nd.end());
-    int i = x.n/2 - 1;
-    if(x.n%2 == 0) {
+    int i = x.nd.size()/2;
+    if(x.nd.size()%2 == 0) {
         float t = (x.nd[i]+x.nd[i+1])/2.0;
         return(Final(t, x.exam));
     }
     else return(Final(x.nd[i], x.exam));
 }
 
-void Output(int n, stud x[]) {
+void Output(vector<stud> x) {
 	cout<< setw(18) << std::left << "Vardas" << setw(18) << std::left << "Pavarde" << "Galutinis (Vid.) / Galutinis (Med.)\n";
     cout<<"------------------------------------------------------------\n";
-    for(int i=0; i<n; i++) {
+    for(int i=0; i<x.size(); i++) {
 	    cout<<setw(18)<<std::left<<x[i].name<<setw(18)<<std::left<<x[i].lname;
-		if(n == 0)
-	    	 cout<<std::setw(19)<<std::left<<Final(0, x[i].exam)<<endl;
-		else cout<<std::setw(19)<<std::left<<Average(x[i])<<setw(16)<<std::left<<Median(x[i])<<endl;
+	    cout<<std::setw(19)<<std::left<<Average(x[i])<<setw(16)<<std::left<<Median(x[i])<<endl;
 	}
 }
 
@@ -104,13 +92,9 @@ bool cmpr(stud a, stud b) {
     return a.lname < b.lname;
 }
 
-bool youAreHere() {
-    std::ifstream infile("kursiokai.txt");
-    return infile.good();
-}
-
 string whichFile() {
-	if (youAreHere()) return("kursiokai.txt");
+	std::ifstream infile("kursiokai.txt");
+	if (infile.good()) return("kursiokai.txt");
 	else {
 		CreateInput(25, 5); // Kiek mokiniu, kiek namu darbu
 		return("Generated.txt");
@@ -119,14 +103,11 @@ string whichFile() {
 
 int main() {
 	string input = whichFile(); // Tikrina ar yra kursiokai.txt failas
-	const int n = InLen(input);
-	if(n == -1) cout << "Papildykite kursiokai.txt faila arba ji istrinkite" << endl;
-	else {
-		stud *x = new stud[n];
-		Input(n, x, input);
-		std::sort(x, x+n, cmpr);
-		Output(n, x);
-		delete[] x;
-	}
+	try {
+		std::vector<stud> x;
+		Input(x, input);
+		std::sort(x.begin(), x.end(), cmpr);
+		Output(x);
+	} catch(std::exception& e) { cout << "Papildykite kursiokai.txt faila arba ji istrinkite" << endl; }
 	return 0;
 }

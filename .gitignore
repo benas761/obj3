@@ -1,0 +1,14 @@
+
+bin/Debug/
+
+Generated.txt
+
+main
+
+*.o
+
+*.cbp
+
+*.depend
+
+*.layout

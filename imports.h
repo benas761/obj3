@@ -15,6 +15,6 @@ using std::setw;
 
 struct stud {
 	string name, lname;
-	int n = 0, exam;
+	int exam;
 	std::vector<int> nd;
 };

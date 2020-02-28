@@ -43,8 +43,9 @@ Laikai:
   - Rasymas:      23.6103 s.
   - Viso:         72.60224 s.
   
-Generavimas - pasirinkto dydžio failo generavimo laikas, skaitymas - sugeneruoto failo skaitymo laikas, skaičiavimas - vidurkių skaičiavimas, atrinkimas - studentų atskyrimas pagal jų vidurkius, rašymas - rašymas į failą.
-
+v0.3 pakeitimai:
+- Pridėtas antraštės failas.
+- Funkcijos perkeltos į 2 .cpp failus. inOut.cpp - išvesčiai, gradeGen.cpp - vidurkiui ir medianai.
 
 v0.2 pakeitimai:
 - Dirba su mokinių sąrašu, kuriame gali būti skirtingas kiekvieno mokinio padarytų namų darbų kiekis.

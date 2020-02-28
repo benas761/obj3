@@ -22,11 +22,11 @@ struct stud {
 
 void CreateInput(int, int);
 int InLen(string);
-void Input(int, stud*, string);
+void Input(vector<stud>&, string);
 float Final(float, float);
 float Average(stud);
 float Median(stud);
-void Output(int, stud*);
-void Output2file(int, stud*);
+void Output(vector<stud>);
+void Output2file(vector<stud>);
 bool cmpr(stud, stud);
 string whichFile();

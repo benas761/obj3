@@ -5,19 +5,22 @@ float Final(float avg, float m) {
 }
 
 float Average(stud x) {
-    double avg=0;
-    for(int i=0; i<x.n; i++) {
-        avg += x.nd[i];
-    }
-    return Final(avg/x.n, x.exam);
+    double avg = std::accumulate(x.nd.begin(), x.nd.end(), 0.0)/x.nd.size();
+    return Final(avg/x.nd.size(), x.exam);
 }
 
 float Median(stud x) {
-    int i = x.n/2;
+    int i = x.nd.size()/2;
     sort(x.nd.begin(), x.nd.end());
-    if(x.n%2 == 0) {
+    if(x.nd.size()%2 == 0) {
         float t = (x.nd[i]+x.nd[i+1])/2.0;
         return(Final(t, x.exam));
     }
     else return(Final(x.nd[i], x.exam));
+}
+
+bool cmpr(stud a, stud b) {
+    if (a.name != b.name)
+        return a.name < b.name;
+    return a.lname < b.lname;
 }

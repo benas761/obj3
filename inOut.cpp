@@ -67,7 +67,7 @@ bool compareByName(stud a, stud b) {
     return a.lname < b.lname;
 }
 
-string whichFile() {
+string whichFile(int n) {
 	std::ifstream infile("kursiokai.txt");
 	if (infile.good()) return("kursiokai.txt");
 	else {

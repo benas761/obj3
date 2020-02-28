@@ -4,24 +4,22 @@ int main() {
 	timer fileGen;
 	string input = whichFile(100000); // Tikrina ar yra kursiokai.txt failas. Jeigu nera, kokio dydzio testo faila sukurti.
 	fileGen.stop();
-	const int n = InLen(input);
 	try {
 		timer fileRead;
-		stud *x = new stud[n];
-		Input(n, x, input);
+		vector<stud> x;
+		Input(x, input);
 		fileRead.stop();
 		timer calc;
-		AssignGrades(n, x);
+		AssignGrades(x);
 		calc.stop();
 		timer pick;
 		std::vector<stud> good, bad;
-		int g, b;
-		std::sort(x, x+n, compareByName);
-		Pick(x, n, good, bad, g, b);
+		std::sort(x.begin(), x.end(), compareByName);
+		Pick(x, good, bad);
 		pick.stop();
 		timer out;
-        Output2file(g, good, "Patenkinami.txt");
-		Output2file(b, bad,  "Nepatenkinami.txt");
+        Output2file(good, "Patenkinami.txt");
+		Output2file(bad,  "Nepatenkinami.txt");
 		out.stop();
 		cout<<"Generavimas: "<<fileGen.duration()<<"s.\nSkaitymas: "<<fileRead.duration()<<"s.\nSkaiciavimas: "<<calc.duration()<<"s.\nAtrinkimas: ";
 		cout<<pick.duration()<<"s.\nRasymas:"<<out.duration()<<"s.\nViso: "<<fileGen.duration()+fileRead.duration()+calc.duration()+pick.duration()<<"s.\n";

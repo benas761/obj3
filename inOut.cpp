@@ -17,52 +17,45 @@ void CreateInput(int n, int m) { // pakeista i sablona
 	fr.close();
 }
 
-int InLen(string input = "generated.txt") {// Programai laiko kainuoja, bet man sutaupo, atsiprasau.
-	int n = 0;
-	string t;
-	std::ifstream fd(input);
-	while(getline(fd, t)) if(t != "") n++; // Suskaiciuoja kiek viso mokiniu bus
-	n--; //Nereikia pirmos linijos.
-	fd.close();
-	return n;
-}
-
-void Input(int n, stud x[], string input = "generated.txt") {
-	string str;
+void Input(vector<stud> &x, string input = "Generated.txt") {
+	string str; stud temp;
 	std::ifstream fd(input);
 	getline(fd, str); // Praleidzia pirma linija
-	for(int i=0; i<n; i++) {
-		fd >> x[i].name >> x[i].lname;
-	    int in;
-		getline(fd, str);
-		for(int i=0; i<str.length(); i++) if(str[i]==',') str[i]='.';
-        std::istringstream ss(str);
-	    while(ss >> in) {
-	        if(in <= 10 && in > 0) x[i].nd.push_back(in);
-	        else throw std::runtime_error("\nDirbama tik su sveikais skaiciais tarp 1 ir 10. Patikrinkite ivesti.\n");
-	    }
-	    if(x[i].nd.size()>0) {
-	    	x[i].exam = x[i].nd.back();
-	    	x[i].nd.pop_back();
-            if(x[i].nd.size()==0) x[i].nd.push_back(0);
+	while(getline(fd, str)) {
+		x.push_back(temp);
+		std::istringstream ss(str);
+		ss >> x.back().name >> x.back().lname;
+		int in;
+	    while(ss >> in) if(in <= 10 || in > 0) x.back().nd.push_back(in);
+	    if(x.back().nd.size() > 1) {
+	    	x.back().exam = x.back().nd.back();
+	    	x.back().nd.pop_back();
 		}
-		else x[i].exam = 0;
+		else if(x.back().nd.size() == 0) {
+			x.back().exam = x.back().nd.back();
+			x.back().nd.back() = 0;
+		}
+		else {
+			x.back().exam = 0;
+			x.back().nd.back() = 0;
+		}
+
 	}
 	fd.close();
 }
 
-void Output(int n, vector<stud> x) {
+void Output(vector<stud> x) {
 	cout << setw(18) << std::left << "Vardas" << setw(18) << std::left << "Pavarde" << "Galutinis (Vid.) / Galutinis (Med.)\n" <<"------------------------------------------------------------\n";
-	for(int i=0; i<n; i++) {
+	for(int i=0; i<x.size(); i++) {
 		cout <<setw(18)<<std::left<<x[i].name<<setw(18)<<std::left<<x[i].lname;
 		cout <<std::setw(19)<<std::left<<x[i].avg<<setw(16)<<std::left<<x[i].medAvg<<endl;
 	}
 }
 
-void Output2file(int n, vector<stud> x, string out) {
+void Output2file(vector<stud> x, string out) {
 	std::ofstream fr(out);
 	fr << setw(18) << std::left << "Vardas" << setw(18) << std::left << "Pavarde" << "Galutinis (Vid.) / Galutinis (Med.)\n" <<"------------------------------------------------------------\n";
-	for(int i=0; i<n; i++) {
+	for(int i=0; i<x.size(); i++) {
 		fr <<setw(18)<<std::left<<x[i].name<<setw(18)<<std::left<<x[i].lname;
 		fr <<std::setw(19)<<std::left<<x[i].avg<<setw(16)<<std::left<<x[i].medAvg<<endl;
 	}

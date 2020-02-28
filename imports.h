@@ -32,14 +32,13 @@ public:
 };
 
 void CreateInput(int, int);
-int InLen(string);
-void Input(int, stud*, string);
+void Input(vector<stud>&, string);
 float Final(float, float);
 float Average(stud);
 float Median(stud);
-void AssignGrades(int, stud*);
-void Pick(stud*, int, vector<stud>&, vector<stud>&, int&, int&);
-void Output(int, vector<stud>);
-void Output2file(int, vector<stud>, string);
+void AssignGrades(vector<stud>&);
+void Pick(vector<stud>&, vector<stud>&, vector<stud>&);
+void Output(vector<stud>);
+void Output2file(vector<stud>, string);
 bool compareByName(stud, stud);
 string whichFile(int);

@@ -19,19 +19,17 @@ float Median(stud x) {
     else return(Final(x.nd[i], x.exam));
 }
 
-void AssignGrades(int n, stud x[]) { // merge w/ pick?
-    for(int i=0; i<n; i++) {
+void AssignGrades(vector<stud> &x) { // merge w/ pick?
+    for(int i=0; i<x.size(); i++) {
         x[i].avg = Average(x[i]);
         x[i].medAvg = Median(x[i]);
     }
 }
 
-void Pick(stud *x, int n, vector<stud> &good, vector<stud> &bad, int &g, int &b) {
-    g=0; b=0;
-    for(int i=0; i<n; i++) {
-        if(x[i].avg >= 5) { good.push_back(x[i]); g++; }
-        else { bad.push_back(x[i]); b++; }
-        //delete &x[i]; - SIGABRT
+void Pick(vector<stud> &x, vector<stud> &good, vector<stud> &bad) {
+    for(int i=0; i<x.size(); i++) {
+        if(x[i].avg >= 5) good.push_back(x[i]);
+        else bad.push_back(x[i]);
     }
-    delete[] x;
+    x.clear();
 }

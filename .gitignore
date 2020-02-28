@@ -1,4 +1,6 @@
 
+main
+
 Generated.txt
 
 main
@@ -8,3 +10,11 @@ Nepatenkinami.txt
 Patenkinami.txt
 
 results.txt
+
+*.o
+
+*.cbp
+
+*.depend
+
+*.layout

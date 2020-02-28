@@ -39,7 +39,6 @@ void Input(vector<stud> &x, string input = "Generated.txt") {
 			x.back().exam = 0;
 			x.back().nd.back() = 0;
 		}
-
 	}
 	fd.close();
 }
@@ -68,10 +67,9 @@ bool compareByName(stud a, stud b) {
     return a.lname < b.lname;
 }
 
-string whichFile(int n) {
-	string inpf = "kursiokai.txt";
-	std::ifstream infile(inpf);
-	if (infile.good()) { infile.close(); return(inpf); }
+string whichFile() {
+	std::ifstream infile("kursiokai.txt");
+	if (infile.good()) return("kursiokai.txt");
 	else {
 		infile.close();
 		CreateInput(n, 5); // Kiek mokiniu, kiek namu darbu

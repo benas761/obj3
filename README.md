@@ -46,6 +46,11 @@ Laikai:
 Generavimas - pasirinkto dydžio failo generavimo laikas, skaitymas - sugeneruoto failo skaitymo laikas, skaičiavimas - vidurkių skaičiavimas, atrinkimas - studentų atskyrimas pagal jų vidurkius, rašymas - rašymas į failą.
 
 
+v0.2 pakeitimai:
+- Dirba su mokinių sąrašu, kuriame gali būti skirtingas kiekvieno mokinio padarytų namų darbų kiekis.
+- Išveda pagal vardą (jei vardai vienodi, pavardę) surūšiuotą mokinių galutinių balų sąrašą.
+- Jei nėra kursiokai.txt failo sugeneruoja naują failą Generated.txt, su kuriuo toliau vykdo operacijas.
+
 Programa raides, simbolius ir kitus netinkamus pazymiu formatus ignoruoja.
 Pazymiuose kablelius pavercia i taskus, bet viska, kas eina po tasko ignoriuoja (dirba su int).
 Perskaičius string formato įvestį ignoruoja viską, kas eina po jo toje eilutėje.

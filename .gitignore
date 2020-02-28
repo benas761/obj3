@@ -1,11 +1,15 @@
 
 main
 
-results.txt
-
 Generated.txt
 
 main
+
+Nepatenkinami.txt
+
+Patenkinami.txt
+
+results.txt
 
 *.o
 

@@ -1,6 +1,16 @@
 
 main
 
+results.txt
+
 Generated.txt
 
-results.txt
+main
+
+*.o
+
+*.cbp
+
+*.depend
+
+*.layout

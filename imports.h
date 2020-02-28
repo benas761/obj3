@@ -16,7 +16,7 @@ using std::setw;
 
 struct stud {
 	string name, lname;
-	float exam;
+	int exam;
 	std::vector<int> nd;
 };
 

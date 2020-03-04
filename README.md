@@ -52,9 +52,9 @@ v0.2 pakeitimai:
 - Išveda pagal vardą (jei vardai vienodi, pavardę) surūšiuotą mokinių galutinių balų sąrašą.
 - Jei nėra kursiokai.txt failo sugeneruoja naują failą Generated.txt, su kuriuo toliau vykdo operacijas.
 
-Programa raides, simbolius ir kitus netinkamus pazymiu formatus ignoruoja.
-Pazymiuose kablelius pavercia i taskus, bet viska, kas eina po tasko ignoriuoja (dirba su int).
-Perskaičius string formato įvestį ignoruoja viską, kas eina po jo toje eilutėje.
+Programa raides, simbolius ir kitus netinkamus pažymių formatus ignoruoja.
+Pažymiuose kablelius pavercia į taskus, bet viską, kas eina po tasko ignoriuoja (dirba su int).
+Perskaičius string formato pažymio įvestį ignoruoja viską, kas eina po jo toje eilutėje.
 
 Skaitymui:
 - Sukurti failą kursiokai.txt. Pirma eilutė ignoruojama, tad duomenis pradėti rašyti nuo antros eilutės.

@@ -81,3 +81,5 @@ Programa skaičiuoja galutinį balą pagal:
 Programos pavyzdys:
 
 ![Programos pavyzdys](https://github.com/benas761/obj2/blob/v0.4/v0.4%20ex)
+
+Rezultatai rašomi į failus.

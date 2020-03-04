@@ -1,8 +1,11 @@
 #include "imports.h"
 
 int main() {
+	cout << "10^";
+	int t;
+	std::cin >> t;
 	timer fileGen;
-	string input = whichFile(100000); // Tikrina ar yra kursiokai.txt failas. Jeigu nera, kokio dydzio testo faila sukurti.
+	string input = whichFile(pow(10, t)); // Tikrina ar yra kursiokai.txt failas. Jeigu nera, kokio dydzio testo faila sukurti.
 	fileGen.stop();
 	try {
 		timer fileRead;
@@ -14,7 +17,6 @@ int main() {
 		calc.stop();
 		timer pick;
 		std::deque<stud> good, bad;
-		std::sort(x.begin(), x.end(), compareByName);
 		Pick(x, good, bad);
 		pick.stop();
 		timer out;

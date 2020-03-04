@@ -32,4 +32,6 @@ void Pick(deque<stud> &x, deque<stud> &good, deque<stud> &bad) {
         else bad.push_back(x[i]);
     }
     x.clear();
+    std::sort(good.begin(), good.end(), compareByName);
+    std::sort(bad.begin(), bad.end(), compareByName);
 }

@@ -6,6 +6,7 @@
 #include <random>
 #include <chrono>
 #include <algorithm>
+#include <cmath>
 
 using std::string;
 using std::deque;

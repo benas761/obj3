@@ -17,7 +17,7 @@ struct stud {
 	string name, lname;
 	float medAvg, avg;
 	int exam;
-	list<int> nd;
+	std::list<int> nd;
 };
 
 class timer{
@@ -33,13 +33,16 @@ public:
 };
 
 void CreateInput(int, int);
-void Input(list<stud>&, string);
+void FileInput(list<stud>&, string);
+void CmdInput(list<stud> &x);
 float Final(float, float);
 float Average(stud);
 float Median(stud);
 void AssignGrades(list<stud>&);
 void Pick(list<stud>&, list<stud>&, list<stud>&);
-void Output(list<stud>);
-void Output2file(list<stud>, string);
+void Output(list<stud>&);
+void Output2file(list<stud>&, string);
 bool compareByName(stud, stud);
 string whichFile(int);
+void OutputTime(int, timer, timer, timer, timer, timer);
+void OutputTime(timer, timer, timer);

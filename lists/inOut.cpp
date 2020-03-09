@@ -17,7 +17,7 @@ void CreateInput(int n, int m) { // pakeista i sablona
 	fr.close();
 }
 
-void Input(list<stud> &x, string input = "Generated.txt") {
+void FileInput(list<stud> &x, string input = "Generated.txt") {
 	string str; stud temp;
 	std::ifstream fd(input);
 	getline(fd, str); // Praleidzia pirma linija
@@ -43,22 +43,60 @@ void Input(list<stud> &x, string input = "Generated.txt") {
 	fd.close();
 }
 
-void Output(list<stud> x) {
-	cout << setw(18) << std::left << "Vardas" << setw(18) << std::left << "Pavarde" << "Galutinis (Vid.) / Galutinis (Med.)\n" <<"------------------------------------------------------------\n";
-	for(int i=0; i<x.size(); i++) {
-		cout <<setw(18)<<std::left<<x[i].name<<setw(18)<<std::left<<x[i].lname;
-		cout <<std::setw(19)<<std::left<<x[i].avg<<setw(16)<<std::left<<x[i].medAvg<<endl;
+void CmdInput(list<stud> &x) {
+	using std::cin;
+	string str; stud temp;
+    getline(cin, str);  // Ignoruoja pasilikusi \n (getline, nes ignore tarpus priskaiciuoja)
+	cout << "Iveskite mokiniu vardus, pavardes ir pazymius (egzamino pazymys paskutinis, vienas mokinys - viena eilute)\nNorint baigti iveskite tuscia eilute.\n";
+	while(getline(cin, str)) {
+		if(str == "") break;
+		x.push_back(temp);
+		std::istringstream ss(str);
+		ss >> x.back().name >> x.back().lname;
+		int in;
+	    while(ss >> in) if(in <= 10 || in > 0) x.back().nd.push_back(in);
+	    if(x.back().nd.size() > 1) {
+	    	x.back().exam = x.back().nd.back();
+	    	x.back().nd.pop_back();
+		}
+		else if(x.back().nd.size() == 1) {
+			x.back().exam = x.back().nd.back();
+			x.back().nd.back() = 0;
+		}
+		else {
+			x.back().exam = 0;
+			x.back().nd.push_back(0);
+		}
+
 	}
 }
 
-void Output2file(list<stud> x, string out) {
+void Output(list<stud> &x) {
+	cout << setw(18) << std::left << "Vardas" << setw(18) << std::left << "Pavarde" << "Galutinis (Vid.) / Galutinis (Med.)\n" <<"------------------------------------------------------------\n";
+	for(int i=0; i<x.size(); i++) {
+		cout <<setw(18)<<std::left<<(*next(x.begin(), i)).name<<setw(18)<<std::left<<(*next(x.begin(), i)).lname;
+		cout <<std::setw(19)<<std::left<<(*next(x.begin(), i)).avg<<setw(16)<<std::left<<(*next(x.begin(), i)).medAvg<<endl;
+	}
+}
+
+void Output2file(list<stud> &x, string out) {
 	std::ofstream fr(out);
 	fr << setw(18) << std::left << "Vardas" << setw(18) << std::left << "Pavarde" << "Galutinis (Vid.) / Galutinis (Med.)\n" <<"------------------------------------------------------------\n";
 	for(int i=0; i<x.size(); i++) {
-		fr <<setw(18)<<std::left<<x[i].name<<setw(18)<<std::left<<x[i].lname;
-		fr <<std::setw(19)<<std::left<<x[i].avg<<setw(16)<<std::left<<x[i].medAvg<<endl;
+		fr <<setw(18)<<std::left<<(*next(x.begin(), i)).name<<setw(18)<<std::left<<(*next(x.begin(), i)).lname;
+		fr <<std::setw(19)<<std::left<<(*next(x.begin(), i)).avg<<setw(16)<<std::left<<(*next(x.begin(), i)).medAvg<<endl;
 	}
 	fr.close();
+}
+
+void OutputTime(int i, timer fileGen, timer fileRead, timer calc, timer pick, timer out) {
+	cout << std::setprecision(5) << std::fixed << "| " << setw(9) << std::left << std::fixed << i << "|  " << setw(11) << fileGen.duration() << "| " << setw(10) << fileRead.duration() << "| " << setw(13) << calc.duration() << "| ";
+	cout << setw(11) << pick.duration() << "| " << setw(8) << out.duration() << "| " << setw(8) << fileGen.duration()+fileRead.duration()+calc.duration()+pick.duration() << "|\n";
+}
+
+void OutputTime(timer calc, timer pick, timer out) {
+	cout << std::setprecision(5) << std::fixed << "| " << setw(13) << calc.duration() << "| ";
+	cout << setw(11) << pick.duration() << "| " << setw(8) << out.duration() << "| " << setw(8) << calc.duration()+pick.duration() << "|\n";
 }
 
 bool compareByName(stud a, stud b) {

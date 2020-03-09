@@ -58,6 +58,7 @@ Laikas su vektoriais:
 | 10000000 |  23.36243   | 24.03756  | 6.86270      | 202.00982  | 24.86446| 256.27250|
 
 Laikas su deque:
+
 |  Dydis   | Generavimas | Skaitymas | Skaiciavimas | Atrinkimas | Rasymas |   Viso   |
 
 | 1000     |  0.00821    | 0.00230   | 0.00233      | 0.01944    | 0.00385 | 0.03229  |
@@ -69,6 +70,20 @@ Laikas su deque:
 | 1000000  |  3.36204    | 1.68653   | 2.02515      | 44.21737   | 3.78167 | 51.29108 |
 
 | 10000000 | Out of memory |
+
+Laikas su list:
+
+|  Dydis   | Generavimas | Skaitymas | Skaiciavimas | Atrinkimas | Rasymas |   Viso  |
+
+| 1000     |  0.00758    | 0.00198   | 0.01481      | 0.00518    | 0.01121 | 0.02954 |
+
+| 10000    |  0.03897    | 0.01711   | 1.66128      | 0.84446    | 1.13534 | 2.56183 |
+
+| 100000   |  0.32091    | 0.17872   | 713.51093    | 432.60932  | 517.713 | 1146.61 |
+
+| 1000000  | viso ~142 val.
+
+| 10000000 | viso ∞
   
 Generavimas - parinkto dydžio failo generavimas.
 Skaitymas - sugeneruoto failo skaitymas.

@@ -10,26 +10,26 @@ float Average(stud x) {
 }
 
 float Median(stud x) {
-    int i = x.nd.size()/2+1;
-    sort(x.nd.begin(), x.nd.end());
+    int i = x.nd.size()/2;
+    x.nd.sort();
     if(x.nd.size()%2 == 0) {
-        float t = (x.nd[i]+x.nd[i+1])/2.0;
+        float t = ((*next(x.nd.begin(), i))+(*next(x.nd.begin(), i)))/2.0;
         return(Final(t, x.exam));
     }
-    else return(Final(x.nd[i], x.exam));
+    else return(Final(*next(x.nd.begin(), i), x.exam));
 }
 
 void AssignGrades(list<stud> &x) {
     for(int i=0; i<x.size(); i++) {
-        x[i].avg = Average(x[i]);
-        x[i].medAvg = Median(x[i]);
+        (*next(x.begin(), i)).avg = Average(*next(x.begin(), i));
+        (*next(x.begin(), i)).medAvg = Median(*next(x.begin(), i));
     }
 }
 
 void Pick(list<stud> &x, list<stud> &good, list<stud> &bad) {
     for(int i=0; i<x.size(); i++) {
-        if(x[i].avg >= 5) good.push_back(x[i]);
-        else bad.push_back(x[i]);
+        if((*next(x.begin(), i)).avg >= 5) good.push_back(*next(x.begin(), i));
+        else bad.push_back(*next(x.begin(), i));
     }
     x.clear();
 }

@@ -61,6 +61,11 @@ void Output2file(vector<stud> x, string out) {
 	fr.close();
 }
 
+void OutputTime(int i, timer fileGen, timer fileRead, timer calc, timer pick, timer out) {
+	cout << std::setprecision(5) << std::fixed << "| " << setw(9) << std::left << std::fixed << i << "|  " << setw(11) << fileGen.duration() << "| " << setw(10) << fileRead.duration() << "| " << setw(13) << calc.duration() << "| ";
+	cout << setw(11) << pick.duration() << "| " << setw(8) << out.duration() << "| " << setw(8) << fileGen.duration()+fileRead.duration()+calc.duration()+pick.duration() << "|\n";
+}
+
 bool compareByName(stud a, stud b) {
     if (a.name != b.name)
         return a.name < b.name;

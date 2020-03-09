@@ -18,3 +18,7 @@ results.txt
 *.depend
 
 *.layout
+
+*.txt
+
+bin/Debug/

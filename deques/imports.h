@@ -6,7 +6,6 @@
 #include <random>
 #include <chrono>
 #include <algorithm>
-#include <cmath>
 
 using std::string;
 using std::deque;
@@ -34,13 +33,16 @@ public:
 };
 
 void CreateInput(int, int);
-void Input(deque<stud>&, string);
+void FileInput(deque<stud>&, string);
+void CmdInput(deque<stud> &x);
 float Final(float, float);
 float Average(stud);
 float Median(stud);
 void AssignGrades(deque<stud>&);
 void Pick(deque<stud>&, deque<stud>&, deque<stud>&);
-void Output(deque<stud>);
-void Output2file(deque<stud>, string);
+void Output(deque<stud>&);
+void Output2file(deque<stud>&, string);
 bool compareByName(stud, stud);
 string whichFile(int);
+void OutputTime(int, timer, timer, timer, timer, timer);
+void OutputTime(timer, timer, timer);

@@ -42,6 +42,12 @@ Laikai:
   - Atrinkimas:   3.74884 s.
   - Rasymas:      23.6103 s.
   - Viso:         72.60224 s.
+
+|  Dydis   | Generavimas | Skaitymas | Skaiciavimas | Atrinkimas | Rasymas |   Viso   |
+| 1000     |  0.00821    | 0.00230   | 0.00233      | 0.01944    | 0.00385 | 0.03229 |
+| 10000    |  0.03340    | 0.01775   | 0.02124      | 0.25262    | 0.03731 | 0.32501 |
+| 100000   |  0.32158    | 0.15894   | 0.19140      | 3.53672    | 0.37067 | 4.20864 |
+| 1000000  |  3.36204    | 1.68653   | 2.02515      | 44.21737   | 3.78167 | 51.29108|
   
 Generavimas - parinkto dydžio failo generavimas.
 Skaitymas - sugeneruoto failo skaitymas.

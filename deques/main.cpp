@@ -3,7 +3,7 @@
 int main() {
 	cout << "Dirbti su komandine eilute - 0, dirbti su failu - 1" << endl;
 	bool choice;
-	vector<stud> x;
+	deque<stud> x;
 	std::cin >> choice;
 	if(choice) {
 		cout << "|  Dydis   | Generavimas | Skaitymas | Skaiciavimas | Atrinkimas | Rasymas |   Viso   |\n";
@@ -19,7 +19,7 @@ int main() {
 				AssignGrades(x);
 				calc.stop();
 				timer pick;
-				std::vector<stud> good, bad;
+				std::deque<stud> good, bad;
 				std::sort(x.begin(), x.end(), compareByName);
 				Pick(x, good, bad);
 				pick.stop();
@@ -37,7 +37,7 @@ int main() {
 	else {
 		CmdInput(x);
 		AssignGrades(x);
-		std::vector<stud> good, bad;
+		std::deque<stud> good, bad;
 		std::sort(x.begin(), x.end(), compareByName);
         Output2file(x, "cmdOutput.txt");
         Output(x);

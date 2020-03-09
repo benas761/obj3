@@ -1,6 +1,6 @@
 #include <fstream>
 #include <iostream>
-#include <vector>
+#include <deque>
 #include <sstream>
 #include <iomanip>
 #include <random>
@@ -8,7 +8,7 @@
 #include <algorithm>
 
 using std::string;
-using std::vector;
+using std::deque;
 using std::cout;
 using std::endl;
 using std::setw;
@@ -17,7 +17,7 @@ struct stud {
 	string name, lname;
 	float medAvg, avg;
 	int exam;
-	std::vector<int> nd;
+	std::deque<int> nd;
 };
 
 class timer{
@@ -33,15 +33,15 @@ public:
 };
 
 void CreateInput(int, int);
-void FileInput(vector<stud>&, string);
-void CmdInput(vector<stud> &x);
+void FileInput(deque<stud>&, string);
+void CmdInput(deque<stud> &x);
 float Final(float, float);
 float Average(stud);
 float Median(stud);
-void AssignGrades(vector<stud>&);
-void Pick(vector<stud>&, vector<stud>&, vector<stud>&);
-void Output(vector<stud>&);
-void Output2file(vector<stud>&, string);
+void AssignGrades(deque<stud>&);
+void Pick(deque<stud>&, deque<stud>&, deque<stud>&);
+void Output(deque<stud>&);
+void Output2file(deque<stud>&, string);
 bool compareByName(stud, stud);
 string whichFile(int);
 void OutputTime(int, timer, timer, timer, timer, timer);

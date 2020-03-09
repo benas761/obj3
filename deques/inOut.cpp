@@ -17,7 +17,7 @@ void CreateInput(int n, int m) { // pakeista i sablona
 	fr.close();
 }
 
-void FileInput(vector<stud> &x, string input = "Generated.txt") {
+void FileInput(deque<stud> &x, string input = "Generated.txt") {
 	string str; stud temp;
 	std::ifstream fd(input);
 	getline(fd, str); // Praleidzia pirma linija
@@ -43,7 +43,7 @@ void FileInput(vector<stud> &x, string input = "Generated.txt") {
 	fd.close();
 }
 
-void CmdInput(vector<stud> &x) {
+void CmdInput(deque<stud> &x) {
 	using std::cin;
 	string str; stud temp;
     getline(cin, str);  // Ignoruoja pasilikusi \n (getline, nes ignore tarpus priskaiciuoja)
@@ -71,7 +71,7 @@ void CmdInput(vector<stud> &x) {
 	}
 }
 
-void Output(vector<stud> &x) {
+void Output(deque<stud> &x) {
 	cout << setw(18) << std::left << "Vardas" << setw(18) << std::left << "Pavarde" << "Galutinis (Vid.) / Galutinis (Med.)\n" <<"------------------------------------------------------------\n";
 	for(int i=0; i<x.size(); i++) {
 		cout <<setw(18)<<std::left<<x[i].name<<setw(18)<<std::left<<x[i].lname;
@@ -79,7 +79,7 @@ void Output(vector<stud> &x) {
 	}
 }
 
-void Output2file(vector<stud> &x, string out) {
+void Output2file(deque<stud> &x, string out) {
 	std::ofstream fr(out);
 	fr << setw(18) << std::left << "Vardas" << setw(18) << std::left << "Pavarde" << "Galutinis (Vid.) / Galutinis (Med.)\n" <<"------------------------------------------------------------\n";
 	for(int i=0; i<x.size(); i++) {

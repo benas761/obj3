@@ -1,6 +1,6 @@
 #include <fstream>
 #include <iostream>
-#include <vector>
+#include <list>
 #include <sstream>
 #include <iomanip>
 #include <random>
@@ -8,16 +8,17 @@
 #include <algorithm>
 
 using std::string;
-using std::vector;
+using std::list;
 using std::cout;
 using std::endl;
 using std::setw;
 
-struct stud {
+class stud {
+public:
 	string name, lname;
 	float medAvg, avg;
 	int exam;
-	std::vector<int> nd;
+	std::list<int> nd;
 };
 
 class timer{
@@ -25,7 +26,7 @@ class timer{
 	std::chrono::duration<double> length;
 public:
 	timer() { start =  std::chrono::high_resolution_clock::now(); }
-	void stop() { 
+	void stop() {
 		end =  std::chrono::high_resolution_clock::now();
 		length = std::chrono::duration_cast<std::chrono::duration<double>>(end-start);
 	}
@@ -33,15 +34,15 @@ public:
 };
 
 void CreateInput(int, int);
-void FileInput(vector<stud>&, string);
-void CmdInput(vector<stud> &x);
+void FileInput(list<stud>&, string);
+void CmdInput(list<stud> &x);
 float Final(float, float);
 float Average(stud);
 float Median(stud);
-void AssignGrades(vector<stud>&);
-void Pick(vector<stud>&, vector<stud>&, vector<stud>&);
-void Output(vector<stud>&);
-void Output2file(vector<stud>&, string);
+void AssignGrades(list<stud>&);
+void Pick(list<stud>&, list<stud>&, list<stud>&);
+void Output(list<stud>&);
+void Output2file(list<stud>&, string);
 bool compareByName(stud, stud);
 string whichFile(int);
 void OutputTime(int, timer, timer, timer, timer, timer);

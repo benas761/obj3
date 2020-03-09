@@ -17,7 +17,7 @@ void CreateInput(int n, int m) { // pakeista i sablona
 	fr.close();
 }
 
-void FileInput(vector<stud> &x, string input = "Generated.txt") {
+void FileInput(list<stud> &x, string input = "Generated.txt") {
 	string str; stud temp;
 	std::ifstream fd(input);
 	getline(fd, str); // Praleidzia pirma linija
@@ -43,7 +43,7 @@ void FileInput(vector<stud> &x, string input = "Generated.txt") {
 	fd.close();
 }
 
-void CmdInput(vector<stud> &x) {
+void CmdInput(list<stud> &x) {
 	using std::cin;
 	string str; stud temp;
     getline(cin, str);  // Ignoruoja pasilikusi \n (getline, nes ignore tarpus priskaiciuoja)
@@ -71,20 +71,20 @@ void CmdInput(vector<stud> &x) {
 	}
 }
 
-void Output(vector<stud> &x) {
+void Output(list<stud> &x) {
 	cout << setw(18) << std::left << "Vardas" << setw(18) << std::left << "Pavarde" << "Galutinis (Vid.) / Galutinis (Med.)\n" <<"------------------------------------------------------------\n";
 	for(int i=0; i<x.size(); i++) {
-		cout <<setw(18)<<std::left<<x[i].name<<setw(18)<<std::left<<x[i].lname;
-		cout <<std::setw(19)<<std::left<<x[i].avg<<setw(16)<<std::left<<x[i].medAvg<<endl;
+		cout <<setw(18)<<std::left<<(*next(x.begin(), i)).name<<setw(18)<<std::left<<(*next(x.begin(), i)).lname;
+		cout <<std::setw(19)<<std::left<<(*next(x.begin(), i)).avg<<setw(16)<<std::left<<(*next(x.begin(), i)).medAvg<<endl;
 	}
 }
 
-void Output2file(vector<stud> &x, string out) {
+void Output2file(list<stud> &x, string out) {
 	std::ofstream fr(out);
 	fr << setw(18) << std::left << "Vardas" << setw(18) << std::left << "Pavarde" << "Galutinis (Vid.) / Galutinis (Med.)\n" <<"------------------------------------------------------------\n";
 	for(int i=0; i<x.size(); i++) {
-		fr <<setw(18)<<std::left<<x[i].name<<setw(18)<<std::left<<x[i].lname;
-		fr <<std::setw(19)<<std::left<<x[i].avg<<setw(16)<<std::left<<x[i].medAvg<<endl;
+		fr <<setw(18)<<std::left<<(*next(x.begin(), i)).name<<setw(18)<<std::left<<(*next(x.begin(), i)).lname;
+		fr <<std::setw(19)<<std::left<<(*next(x.begin(), i)).avg<<setw(16)<<std::left<<(*next(x.begin(), i)).medAvg<<endl;
 	}
 	fr.close();
 }

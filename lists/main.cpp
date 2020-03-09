@@ -20,7 +20,7 @@ int main() {
 				calc.stop();
 				timer pick;
 				std::list<stud> good, bad;
-				//std::sort(x.begin(), x.end(), compareByName);
+				x.sort(compareByName);
 				Pick(x, good, bad);
 				pick.stop();
 				timer out;
@@ -38,7 +38,7 @@ int main() {
 		CmdInput(x);
 		AssignGrades(x);
 		std::list<stud> good, bad;
-		//std::sort(x.begin(), x.end(), compareByName);
+		std::sort(x.begin(), x.end(), compareByName);
         Output2file(x, "cmdOutput.txt");
         Output(x);
 	}

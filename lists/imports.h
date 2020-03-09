@@ -13,7 +13,8 @@ using std::cout;
 using std::endl;
 using std::setw;
 
-struct stud {
+class stud {
+public:
 	string name, lname;
 	float medAvg, avg;
 	int exam;

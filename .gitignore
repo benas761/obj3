@@ -6,3 +6,7 @@ vectors/bin/Debug/
 *.depend
 
 *.layout
+
+*.txt
+
+main

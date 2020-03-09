@@ -37,8 +37,7 @@ int main() {
 	else {
 		CmdInput(x);
 		AssignGrades(x);
-		std::list<stud> good, bad;
-		std::sort(x.begin(), x.end(), compareByName);
+		x.sort(compareByName);
         Output2file(x, "cmdOutput.txt");
         Output(x);
 	}

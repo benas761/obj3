@@ -1,24 +1,8 @@
 
-main
-
-Generated.txt
-
-main
-
-Nepatenkinami.txt
-
-Patenkinami.txt
-
-results.txt
+vectors/bin/Debug/
 
 *.o
-
-*.cbp
 
 *.depend
 
 *.layout
-
-*.txt
-
-bin/Debug/

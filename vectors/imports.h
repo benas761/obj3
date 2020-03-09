@@ -33,13 +33,16 @@ public:
 };
 
 void CreateInput(int, int);
-void Input(vector<stud>&, string);
+void FileInput(vector<stud>&, string);
+void CmdInput(vector<stud> &x);
 float Final(float, float);
 float Average(stud);
 float Median(stud);
 void AssignGrades(vector<stud>&);
 void Pick(vector<stud>&, vector<stud>&, vector<stud>&);
-void Output(vector<stud>);
-void Output2file(vector<stud>, string);
+void Output(vector<stud>&);
+void Output2file(vector<stud>&, string);
 bool compareByName(stud, stud);
 string whichFile(int);
+void OutputTime(int, timer, timer, timer, timer, timer);
+void OutputTime(timer, timer, timer);

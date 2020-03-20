@@ -4,8 +4,15 @@ int main() {
 	cout << "Dirbti su komandine eilute - 0, dirbti su failu - 1" << endl;
 	bool choice;
 	vector<stud> x;
-	std::cin >> choice;
-	if(choice) {
+	bool inChoice;
+	std::cin >> inChoice;
+	cout << "Su kokiu tipu dirbti?\n0 - Vector | 1 - Deque | 2 - List\n";
+	int typeChoice;
+	std::cin >> typeChoice;
+	if(typeChoice == 0) vector<stud> x;
+	if(typeChoice == 1) deque<stud> x;
+	if(typeChoice == 2) list<stud> x;
+	if(inChoice) {
 		cout << "|  Dydis   | Generavimas | Skaitymas | Skaiciavimas | Atrinkimas | Rasymas |   Viso   |\n";
 		for(int i=1000; i<pow(10, 8); i*=10) {
 			timer fileGen;

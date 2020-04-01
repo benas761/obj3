@@ -48,20 +48,23 @@ void OutputTime(timer, timer, timer);
 void FileInput(vector<stud>&, string);
 void CmdInput(vector<stud> &x);
 void AssignGrades(vector<stud>&);
-void Pick(vector<stud>&, vector<stud>&, vector<stud>&);
+void PickBad(vector<stud>&, vector<stud>&, vector<stud>&);
+void PickGood(vector<stud>&, vector<stud>&, vector<stud>&);
 void Output(vector<stud>&);
 void Output2file(vector<stud>&, string);
 
 void FileInput(deque<stud>&, string);
 void CmdInput(deque<stud> &x);
 void AssignGrades(deque<stud>&);
-void Pick(deque<stud>&, deque<stud>&, deque<stud>&);
+void PickBad(deque<stud>&, deque<stud>&, deque<stud>&);
+void PickGood(deque<stud>&, deque<stud>&, deque<stud>&);
 void Output(deque<stud>&);
 void Output2file(deque<stud>&, string);
 
 void FileInput(list<stud>&, string);
 void CmdInput(list<stud> &x);
 void AssignGrades(list<stud>&);
-void Pick(list<stud>&, list<stud>&, list<stud>&);
+void PickBad(list<stud>&, list<stud>&, list<stud>&);
+void PickGood(list<stud>&, list<stud>&, list<stud>&);
 void Output(list<stud>&);
 void Output2file(list<stud>&, string);

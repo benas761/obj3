@@ -40,7 +40,7 @@ void AssignGrades(list<stud> &x) {
     }
 }
 
-void Pick(vector<stud> &x, vector<stud> &good, vector<stud> &bad) {
+void PickBad(vector<stud> &x, vector<stud> &good, vector<stud> &bad) {
     for(int i=0; i<x.size(); i++) {
         if(x[i].avg >= 5) good.push_back(x[i]);
         else bad.push_back(x[i]);
@@ -48,7 +48,7 @@ void Pick(vector<stud> &x, vector<stud> &good, vector<stud> &bad) {
     x.clear();
 }
 
-void Pick(deque<stud> &x, deque<stud> &good, deque<stud> &bad) {
+void PickBad(deque<stud> &x, deque<stud> &good, deque<stud> &bad) {
     for(int i=0; i<x.size(); i++) {
         if(x[i].avg >= 5) good.push_back(x[i]);
         else bad.push_back(x[i]);
@@ -56,10 +56,22 @@ void Pick(deque<stud> &x, deque<stud> &good, deque<stud> &bad) {
     x.clear();
 }
 
-void Pick(list<stud> &x, list<stud> &good, list<stud> &bad) {
+void PickBad(list<stud> &x, list<stud> &good, list<stud> &bad) {
     for(int i=0; i<x.size(); i++) {
         if((*next(x.begin(), i)).avg >= 5) good.push_back(*next(x.begin(), i));
         else bad.push_back(*next(x.begin(), i));
     }
     x.clear();
+}
+
+void PickGood(vector<stud> &x, vector<stud> &good, vector<stud> &bad) {
+    
+}
+
+void PickGood(deque<stud> &x, deque<stud> &good, deque<stud> &bad) {
+    
+}
+
+void PickGood(list<stud> &x, list<stud> &good, list<stud> &bad) {
+    
 }

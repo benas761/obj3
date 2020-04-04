@@ -79,11 +79,9 @@ void Pick(deque<stud>& x, deque<stud>& bad) {
 
 void Pick(list<stud>& x, list<stud>& bad) {
     x.sort([](stud a, stud b){ return a.avg < b.avg; });
-    for(auto it = x.begin(); it!=x.end(); it++) {
-        if((*it).avg < 5) {
-            bad.push_back(*it);
-            x.erase(it);
-        }
+    while(x.back().avg<5) {
+        bad.push_back(x.back());
+        x.pop_back();
     }
     x.sort([](stud a, stud b){ return a.name<b.name; });
     bad.sort([](stud a, stud b){ return a.name<b.name; });

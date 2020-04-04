@@ -176,14 +176,14 @@ void Output2file(list<stud> &x, string out) {
 	fr.close();
 }
 
-void OutputTime(int i, timer fileGen, timer fileRead, timer calc, timer pick, timer out) {
+void OutputTime(int i, timer fileGen, timer fileRead, timer calc, timer pick, timer sortName, timer out) {
 	cout << std::setprecision(5) << std::fixed << "| " << setw(9) << std::left << std::fixed << i << "|  " << setw(11) << fileGen.duration() << "| " << setw(10) << fileRead.duration() << "| " << setw(13) << calc.duration() << "| ";
-	cout << setw(11) << pick.duration() << "| " << setw(8) << out.duration() << "| " << setw(8) << fileGen.duration()+fileRead.duration()+calc.duration()+pick.duration() << "|\n";
+	cout << setw(11) << pick.duration() << "| " << setw(11) << sortName.duration() << "| " << setw(8) << out.duration() << "| " << setw(8) << fileGen.duration()+fileRead.duration()+calc.duration()+pick.duration() << "|\n";
 }
 
-void OutputTime(timer calc, timer pick, timer out) {
+void OutputTime(timer calc, timer pick, timer sort, timer sortName, timer out) {
 	cout << std::setprecision(5) << std::fixed << "| " << setw(13) << calc.duration() << "| ";
-	cout << setw(11) << pick.duration() << "| " << setw(8) << out.duration() << "| " << setw(8) << calc.duration()+pick.duration() << "|\n";
+	cout << setw(11) << pick.duration() << "| " << setw(11) << sortName.duration() << "| " << setw(8) << out.duration() << "| " << setw(8) << calc.duration()+pick.duration() << "|\n";
 }
 
 string whichFile(int n) {

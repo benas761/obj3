@@ -48,9 +48,6 @@ void Pick(vector<stud>& x, vector<stud>& bad) {
         bad.push_back(x.back());
         x.pop_back();
     }
-
-    sort(x.begin(), x.end(), [](stud a, stud b){return a.name<b.name;});
-    sort(bad.begin(), bad.end(), [](stud a, stud b){return a.name<b.name;});
 }
 
 void ImprovedPick(vector<stud>& x, vector<stud>& bad) {
@@ -59,9 +56,6 @@ void ImprovedPick(vector<stud>& x, vector<stud>& bad) {
     x.erase(
         remove_if(x.begin(), x.end(), [](stud a){ return a.avg<5; }),
         x.end());
-
-    sort(x.begin(), x.end(), [](stud a, stud b){return a.name<b.name;});
-    sort(bad.begin(), bad.end(), [](stud a, stud b){return a.name<b.name;});
 }
 
 void Pick(deque<stud>& x, deque<stud>& bad) {
@@ -72,9 +66,6 @@ void Pick(deque<stud>& x, deque<stud>& bad) {
         bad.push_back(x.back());
         x.pop_back();
     }
-
-    sort(x.begin(), x.end(), [](stud a, stud b){return a.name<b.name;});
-    sort(bad.begin(), bad.end(), [](stud a, stud b){return a.name<b.name;});
 }
 
 void Pick(list<stud>& x, list<stud>& bad) {
@@ -83,8 +74,6 @@ void Pick(list<stud>& x, list<stud>& bad) {
         bad.push_back(x.back());
         x.pop_back();
     }
-    x.sort([](stud a, stud b){ return a.name<b.name; });
-    bad.sort([](stud a, stud b){ return a.name<b.name; });
 }
 
 void Ask(bool& inChoice, int& typeChoice){
@@ -99,7 +88,7 @@ void Ask(bool& inChoice, int& typeChoice){
 void Run(vector<stud>& good, vector<stud>& bad, bool pickChoice){
     string input = whichFile(0); // Tikrina ar yra kursiokai.txt failas. Jeigu nera, kokio dydzio testo faila sukurti.
     if(input != "kursiokai.txt") {
-        cout << "|  Dydis   | Generavimas | Skaitymas | Skaiciavimas | Atrinkimas | Rasymas |   Viso  |\n";
+        cout << "|  Dydis   | Generavimas | Skaitymas | Skaiciavimas | Atrinkimas | Rikiavimas | Rasymas |   Viso  |\n";
         for(int i=1000; i<pow(10, 8); i*=10) {
             timer fileGen;
             string input = whichFile(i);
@@ -114,16 +103,21 @@ void Run(vector<stud>& good, vector<stud>& bad, bool pickChoice){
             calc.stop();
 
             timer pick;
-            if(pickChoice) Pick(good, bad);
+            if(!pickChoice) Pick(good, bad);
             else   ImprovedPick(good, bad);
             pick.stop();
+
+            timer sortName;
+            sort(good.begin(), good.end(), [](stud a, stud b){return a.name<b.name;});
+            sort(bad.begin(), bad.end(), [](stud a, stud b){return a.name<b.name;});
+            sortName.stop();
 
             timer out;
             Output2file(good, "Patenkinami.txt");
             Output2file(bad,  "Nepatenkinami.txt");
             out.stop();
 
-            OutputTime(i, fileGen, fileRead, calc, pick, out);
+            OutputTime(i, fileGen, fileRead, calc, pick, sortName, out);
         }
     }
     else try {
@@ -143,7 +137,7 @@ void Run(vector<stud>& good, vector<stud>& bad, bool pickChoice){
 }
 
 void Run(deque<stud>& good, deque<stud>& bad){
-    cout << "|  Dydis   | Generavimas | Skaitymas | Skaiciavimas | Atrinkimas | Rasymas |   Viso  |\n";
+    cout << "|  Dydis   | Generavimas | Skaitymas | Skaiciavimas | Atrinkimas | Rikiavimas | Rasymas |   Viso  |\n";
     for(int i=1000; i<pow(10, 8); i*=10) {
         timer fileGen;
         string input = whichFile(i); // Tikrina ar yra kursiokai.txt failas. Jeigu nera, kokio dydzio testo faila sukurti.
@@ -161,12 +155,17 @@ void Run(deque<stud>& good, deque<stud>& bad){
             Pick(good, bad);
             pick.stop();
 
+            timer sortName;
+            sort(good.begin(), good.end(), [](stud a, stud b){return a.name<b.name;});
+            sort(bad.begin(), bad.end(), [](stud a, stud b){return a.name<b.name;});
+            sortName.stop();
+
             timer out;
             Output2file(good, "Patenkinami.txt");
             Output2file(bad,  "Nepatenkinami.txt");
             out.stop();
 
-            OutputTime(i, fileGen, fileRead, calc, pick, out);
+            OutputTime(i, fileGen, fileRead, calc, pick, sortName, out);
 
             } catch(std::exception& e) {
             cout << "Papildykite kursiokai.txt faila arba ji istrinkite" << endl;
@@ -176,7 +175,7 @@ void Run(deque<stud>& good, deque<stud>& bad){
 }
 
 void Run(list<stud>& good, list<stud>& bad){
-    cout << "|  Dydis   | Generavimas | Skaitymas | Skaiciavimas | Atrinkimas | Rasymas |   Viso  |\n";
+    cout << "|  Dydis   | Generavimas | Skaitymas | Skaiciavimas | Atrinkimas | Rikiavimas | Rasymas |   Viso  |\n";
     for(int i=1000; i<pow(10, 8); i*=10) {
         timer fileGen;
         string input = whichFile(i); // Tikrina ar yra kursiokai.txt failas. Jeigu nera, kokio dydzio testo faila sukurti.
@@ -194,12 +193,17 @@ void Run(list<stud>& good, list<stud>& bad){
             Pick(good, bad);
             pick.stop();
 
+            timer sortName;
+            good.sort([](stud a, stud b){return a.name<b.name;});
+            good.sort([](stud a, stud b){return a.name<b.name;});
+            sortName.stop();
+
             timer out;
             Output2file(good, "Patenkinami.txt");
             Output2file(bad,  "Nepatenkinami.txt");
             out.stop();
 
-            OutputTime(i, fileGen, fileRead, calc, pick, out);
+            OutputTime(i, fileGen, fileRead, calc, pick, sortName, out);
 
             } catch(std::exception& e) {
             cout << "Papildykite kursiokai.txt faila arba ji istrinkite" << endl;

@@ -50,8 +50,8 @@ void Output(list<stud>&);
 void Output2file(vector<stud>&, string);
 void Output2file(deque<stud>&, string);
 void Output2file(list<stud>&, string);
-void OutputTime(int, timer, timer, timer, timer, timer);
-void OutputTime(timer, timer timer);
+void OutputTime(int, timer, timer, timer, timer, timer, timer);
+void OutputTime(timer, timer, timer, timer);
 string whichFile(int);
 
 //gradeGen.cpp

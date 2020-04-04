@@ -7,7 +7,10 @@ int main() {
 	if(inChoice) {
 		if(typeChoice == 0) {
 			vector<stud> good, bad;
-			Run(good, bad);
+			cout << "Neoptimizuotas rinkimas - 0, optimizuotas - 1\n";
+			bool pickChoice;
+			std::cin >> pickChoice;
+			Run(good, bad, pickChoice);
 		}
 		else if(typeChoice == 1) {
 			deque<stud> good, bad;

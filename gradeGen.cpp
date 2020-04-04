@@ -20,58 +20,168 @@ float Median(stud x) {
 }
 
 void AssignGrades(vector<stud> &x) {
-    for(int i=0; i<x.size(); i++) {
-        x[i].avg = Average(x[i]);
-        x[i].medAvg = Median(x[i]);
+    for(auto it = x.begin(); it!=x.end(); it++) {
+        (*it).avg = Average(*it);
+        (*it).medAvg = Median(*it);
     }
 }
 
 void AssignGrades(deque<stud> &x) {
-    for(int i=0; i<x.size(); i++) {
-        x[i].avg = Average(x[i]);
-        x[i].medAvg = Median(x[i]);
+    for(auto it = x.begin(); it!=x.end(); it++) {
+        (*it).avg = Average(*it);
+        (*it).medAvg = Median(*it);
     }
 }
 
 void AssignGrades(list<stud> &x) {
-    for(int i=0; i<x.size(); i++) {
-        (*next(x.begin(), i)).avg = Average(*next(x.begin(), i));
-        (*next(x.begin(), i)).medAvg = Median(*next(x.begin(), i));
+    for(auto it = x.begin(); it!=x.end(); it++) {
+        (*it).avg = Average(*it);
+        (*it).medAvg = Median(*it);
     }
 }
 
-void PickBad(vector<stud> &x, vector<stud> &good, vector<stud> &bad) {
-    for(int i=0; i<x.size(); i++) {
-        if(x[i].avg >= 5) good.push_back(x[i]);
-        else bad.push_back(x[i]);
+void Pick(vector<stud> &x, vector<stud> &bad) {
+    sort(x.begin(), x.end(),
+        [](stud a, stud b){ return a.avg < b.avg; });
+
+    while(x.back().avg<5) {
+        bad.push_back(x.back());
+        x.pop_back();
     }
-    x.clear();
+
+    sort(x.begin(), x.end(), [](stud a, stud b){return a.name<b.name;});
+    sort(bad.begin(), bad.end(), [](stud a, stud b){return a.name<b.name;});
 }
 
-void PickBad(deque<stud> &x, deque<stud> &good, deque<stud> &bad) {
-    for(int i=0; i<x.size(); i++) {
-        if(x[i].avg >= 5) good.push_back(x[i]);
-        else bad.push_back(x[i]);
+void Pick(deque<stud> &x, deque<stud> &bad) {
+    sort(x.begin(), x.end(),
+        [](stud a, stud b){ return a.avg < b.avg; });
+
+    while(x.back().avg<5) {
+        bad.push_back(x.back());
+        x.pop_back();
     }
-    x.clear();
+
+    sort(x.begin(), x.end(), [](stud a, stud b){return a.name<b.name;});
+    sort(bad.begin(), bad.end(), [](stud a, stud b){return a.name<b.name;});
 }
 
-void PickBad(list<stud> &x, list<stud> &good, list<stud> &bad) {
-    for(int i=0; i<x.size(); i++) {
-        if((*next(x.begin(), i)).avg >= 5) good.push_back(*next(x.begin(), i));
-        else bad.push_back(*next(x.begin(), i));
+void Pick(list<stud> &x, list<stud> &bad) {
+    x.sort([](stud a, stud b){ return a.avg < b.avg; });
+    for(auto it = x.begin(); it!=x.end(); it++) {
+        if((*it).avg < 5) {
+            bad.push_back(*it);
+            x.erase(it);
+        }
     }
-    x.clear();
+    x.sort([](stud a, stud b){ return a.name<b.name; });
+    bad.sort([](stud a, stud b){ return a.name<b.name; });
 }
 
-void PickGood(vector<stud> &x, vector<stud> &good, vector<stud> &bad) {
-    
+void Ask(bool &inChoice, int &typeChoice){
+    cout << "Dirbti su komandine eilute - 0, dirbti su failu - 1" << endl;
+    std::cin >> inChoice;
+    if(inChoice) {
+        cout << "Su kokiu tipu dirbti?\n0 - Vector | 1 - Deque | 2 - List\n";
+        std::cin >> typeChoice;
+    }
 }
 
-void PickGood(deque<stud> &x, deque<stud> &good, deque<stud> &bad) {
-    
+void Run(vector<stud>& good, vector<stud>& bad){
+    cout << "|  Dydis   | Generavimas | Skaitymas | Skaiciavimas | Atrinkimas | Rasymas |   Viso  |\n";
+        for(int i=1000; i<pow(10, 8); i*=10) {
+            timer fileGen;
+            string input = whichFile(i); // Tikrina ar yra kursiokai.txt failas. Jeigu nera, kokio dydzio testo faila sukurti.
+            fileGen.stop();
+            try {
+                timer fileRead;
+                FileInput(good, input);
+                fileRead.stop();
+
+                timer calc;
+                AssignGrades(good);
+                calc.stop();
+
+                timer pick;
+                Pick(good, bad);
+                pick.stop();
+
+                timer out;
+                Output2file(good, "Patenkinami.txt");
+                Output2file(bad,  "Nepatenkinami.txt");
+                out.stop();
+
+                OutputTime(i, fileGen, fileRead, calc, pick, out);
+
+                } catch(std::exception& e) {
+                cout << "Papildykite kursiokai.txt faila arba ji istrinkite" << endl;
+                break;
+            }
+        }
 }
 
-void PickGood(list<stud> &x, list<stud> &good, list<stud> &bad) {
-    
+void Run(deque<stud> &good, deque<stud> &bad){
+    cout << "|  Dydis   | Generavimas | Skaitymas | Skaiciavimas | Atrinkimas | Rasymas |   Viso  |\n";
+        for(int i=1000; i<pow(10, 8); i*=10) {
+            timer fileGen;
+            string input = whichFile(i); // Tikrina ar yra kursiokai.txt failas. Jeigu nera, kokio dydzio testo faila sukurti.
+            fileGen.stop();
+            try {
+                timer fileRead;
+                FileInput(good, input);
+                fileRead.stop();
+
+                timer calc;
+                AssignGrades(good);
+                calc.stop();
+
+                timer pick;
+                Pick(good, bad);
+                pick.stop();
+
+                timer out;
+                Output2file(good, "Patenkinami.txt");
+                Output2file(bad,  "Nepatenkinami.txt");
+                out.stop();
+
+                OutputTime(i, fileGen, fileRead, calc, pick, out);
+
+                } catch(std::exception& e) {
+                cout << "Papildykite kursiokai.txt faila arba ji istrinkite" << endl;
+                break;
+            }
+        }
+}
+
+void Run(list<stud> &good, list<stud> &bad){
+    cout << "|  Dydis   | Generavimas | Skaitymas | Skaiciavimas | Atrinkimas | Rasymas |   Viso  |\n";
+        for(int i=1000; i<pow(10, 8); i*=10) {
+            timer fileGen;
+            string input = whichFile(i); // Tikrina ar yra kursiokai.txt failas. Jeigu nera, kokio dydzio testo faila sukurti.
+            fileGen.stop();
+            try {
+                timer fileRead;
+                FileInput(good, input);
+                fileRead.stop();
+
+                timer calc;
+                AssignGrades(good);
+                calc.stop();
+
+                timer pick;
+                Pick(good, bad);
+                pick.stop();
+
+                timer out;
+                Output2file(good, "Patenkinami.txt");
+                Output2file(bad,  "Nepatenkinami.txt");
+                out.stop();
+
+                OutputTime(i, fileGen, fileRead, calc, pick, out);
+
+                } catch(std::exception& e) {
+                cout << "Papildykite kursiokai.txt faila arba ji istrinkite" << endl;
+                break;
+            }
+        }
 }

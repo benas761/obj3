@@ -1,5 +1,12 @@
 # obj2
 
+v1.0 pakeitimai:
+- Pakeistos atrinkimo funkcijos:
+  - Vietoje atrinkimo į 2 atskirus sąrašus dabar programa surūšiuoją sąrašą pagal vidurkį ir perkelia sąrašo pradžioje esančius mažesnius už 5 vidurkius į nepantenkinamų sąrašą.
+  - Pridėtas dar vienas efektyvesnis atrinkimo būdas su vector tipu, naudjantis copy ir clear algoritmus.
+- Atskirtas rūšiavimo laikas nuo atrinkimo laiko.
+- Pridėti naujų atrinkimų laikai.
+
 v0.5 pakeitimai:
 - Padarytos 2 papildomos programos:
   - Deque - tiesiog pakeistas vector į deque duomenų tipą

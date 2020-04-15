@@ -32,6 +32,7 @@
 			<Add option="-Wall" />
 			<Add option="-fexceptions" />
 		</Compiler>
+		<Unit filename="classfuncs.cpp" />
 		<Unit filename="gradeGen.cpp" />
 		<Unit filename="imports.h" />
 		<Unit filename="inOut.cpp" />

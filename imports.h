@@ -18,11 +18,19 @@ using std::endl;
 using std::setw;
 using std::sort;
 
-struct stud {
+class stud {
 	string name, lname;
 	float medAvg, avg;
 	int exam;
-	std::vector<int> nd;
+	vector<int> nd;
+public:
+	void finput(string);
+	void Average();
+	void Median();
+	inline string getName() { return name; }
+	inline string getLname() { return lname; }
+	inline float getMed() { return medAvg; }
+	inline float getAvg() { return avg; }
 };
 
 class timer{
@@ -50,18 +58,16 @@ void Output(list<stud>&);
 void Output2file(vector<stud>&, string);
 void Output2file(deque<stud>&, string);
 void Output2file(list<stud>&, string);
-void OutputTime(int, timer, timer, timer, timer, timer, timer);
-void OutputTime(timer, timer, timer, timer);
+void OutputTime(int, timer, timer, timer, timer, timer);
+void OutputTime(timer, timer, timer);
 string whichFile(int);
 
 //gradeGen.cpp
 
+bool cmprName(stud&, stud&);
+bool cmprAvg(stud&, stud&);
+bool cmprTo5(stud&);
 float Final(float, float);
-float Average(stud);
-float Median(stud);
-void AssignGrades(vector<stud>&);
-void AssignGrades(deque<stud>&);
-void AssignGrades(list<stud>&);
 void Pick(vector<stud>&, vector<stud>&);
 void ImprovedPick(vector<stud>&, vector<stud>&);
 void Pick(deque<stud>&, deque<stud>&);

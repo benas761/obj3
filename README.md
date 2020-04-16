@@ -1,5 +1,38 @@
 # obj3
 
+v1.1 pakeitimai:
+- Pakeista stud struktūra į klasę:
+  - Sukurtas konstruktorius, nuskaitantis duomenis iš nusiųsto eilutės.
+  - Vidurkio ir medianos funkcijos perkeltos į klasę ir dabar yra kviečiamos kostruktiuje.
+- Pataisytos rinkimo (pick) funkcijos, kurios netinkamai rinko dėl netinkamos rūšiavimo funkcijos.
+- Klasės vektoriaus laikai:
+|  Dydis   | Generavimas | Skaitymas | Atrinkimas | Rikiavimas | Rasymas |   Viso  |
+|:--------:|:-----------:|:---------:|:----------:|:----------:|:--------|:-------:|
+| 1000     |  0.00704    | 0.00272   | 0.00028    | 0.00220    | 0.00388 | 0.01004 |
+| 10000    |  0.03035    | 0.02615   | 0.00255    | 0.02957    | 0.03423 | 0.05905 |
+| 100000   |  0.32745    | 0.26163   | 0.02792    | 0.39831    | 0.34491 | 0.61699 |
+| 1000000  |  3.71315    | 2.61334   | 0.26712    | 4.39285    | 4.22985 | 6.59361 |
+| 10000000 |  41.32082   | 30.82113  | 3.06894    | 58.76650   | 47.80699| 75.21089|
+- Vektoriaus optimizuoti laikai:
+  - Pirmas optimizavimo lygis:
+
+|  Dydis   | Generavimas | Skaitymas | Atrinkimas | Rikiavimas | Rasymas |   Viso  |
+|:--------:|:-----------:|:---------:|:----------:|:----------:|:--------|:-------:|
+| 100000   |  0.36413    | 0.27442   | 0.03243    | 0.38728    | 0.50709 | 0.67098 |
+| 1000000  |  5.28314    | 3.14204   | 0.31854    | 5.29234    | 5.44367 | 8.74372 |
+
+  - Antras optimizavimo lygis:
+
+|  Dydis   | Generavimas | Skaitymas | Atrinkimas | Rikiavimas | Rasymas |   Viso  |
+|:--------:|:-----------:|:---------:|:----------:|:----------:|:--------|:-------:|
+| 100000   |  0.32697    | 0.23792   | 0.02704    | 0.31102    | 0.35412 | 0.59193 |
+| 1000000  |  3.73011    | 2.56725   | 0.27212    | 4.68611    | 4.69143 | 6.56948 |
+
+  - Trečias optimizavimo lygis:
+|  Dydis   | Generavimas | Skaitymas | Atrinkimas | Rikiavimas | Rasymas |   Viso  |
+| 100000   |  0.32807    | 0.24075   | 0.02700    | 0.30276    | 0.33292 | 0.59582 |
+| 1000000  |  3.60244    | 2.57579   | 0.28109    | 4.86327    | 3.91890 | 6.45932 |
+
 v1.0 pakeitimai:
 - Pakeistos atrinkimo funkcijos:
   - Vietoje atrinkimo į 2 atskirus sąrašus dabar programa surūšiuoją sąrašą pagal vidurkį ir perkelia sąrašo pradžioje esančius mažesnius už 5 vidurkius į nepantenkinamų sąrašą.
@@ -95,6 +128,18 @@ Skaitymas - sugeneruoto failo skaitymas.
 Skaičiavimas - pažymių pagal vidurkį ir medianą skaičiavimas.
 Atrinkimas - duomenų išrinkimas pagal paskutinį balą, skaičiuotą pagal vidurkį. Čia vyksta rikiavimas.
 Rašymas - duomenų rašymas į 2 failus pagal atrinkimą.
+
+Paleidimo instrukcija:
+- Ant linux sistemos:
+  - Komandinėje eilutėje atsidaryti aplanką, kuriame yra visi .cpp ir .h failai.
+  - Parašyti: 'make' norint sukurti programą.
+  - Parašyti 'make opt1' arba 'make obj2' arba 'make obj3' norint sukurti programą su optimizavimo lygiu.
+  - Parašyti './main' norint paleisti programą.
+  - Parašyti 'make clean' norint ištrinti visus .o ir .txt failus.
+- Ant windows sistemos:
+  - Parsisiųsti codeblocks ir kompiliatorių.
+  - Atsidaryti .cbp failą.
+  - Paspausti *build and run* mygtuką.
 
 Sistemos aprašymas:
 - Intel(R) Core(TM) i5-8265U CPU @ 1.60GH

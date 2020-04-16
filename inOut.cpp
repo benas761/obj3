@@ -18,140 +18,81 @@ void CreateInput(int n, int m) { // pakeista i sablona
 }
 
 void FileInput(vector<stud> &x, string input) {
-	string str; stud temp;
+	string str;
 	std::ifstream fd(input);
 	getline(fd, str); // Praleidzia pirma linija
 	while(getline(fd, str)) {
+		stud temp(str);
 		x.push_back(temp);
-		std::istringstream ss(str);
-		ss >> x.back().name >> x.back().lname;
-		int in;
-	    while(ss >> in) if(in <= 10 || in > 0) x.back().nd.push_back(in);
-	    if(x.back().nd.size() > 1) {
-	    	x.back().exam = x.back().nd.back();
-	    	x.back().nd.pop_back();
-		}
-		else if(x.back().nd.size() == 0) {
-			x.back().exam = x.back().nd.back();
-			x.back().nd.back() = 0;
-		}
-		else {
-			x.back().exam = 0;
-			x.back().nd.back() = 0;
-		}
+		//x.back().finput(str);
 	}
 	fd.close();
 }
 
 void FileInput(deque<stud> &x, string input) {
-	string str; stud temp;
+	string str;
 	std::ifstream fd(input);
 	getline(fd, str); // Praleidzia pirma linija
 	while(getline(fd, str)) {
+		stud temp(str);
 		x.push_back(temp);
-		std::istringstream ss(str);
-		ss >> x.back().name >> x.back().lname;
-		int in;
-	    while(ss >> in) if(in <= 10 || in > 0) x.back().nd.push_back(in);
-	    if(x.back().nd.size() > 1) {
-	    	x.back().exam = x.back().nd.back();
-	    	x.back().nd.pop_back();
-		}
-		else if(x.back().nd.size() == 0) {
-			x.back().exam = x.back().nd.back();
-			x.back().nd.back() = 0;
-		}
-		else {
-			x.back().exam = 0;
-			x.back().nd.back() = 0;
-		}
 	}
 	fd.close();
 }
 
 void FileInput(list<stud> &x, string input) {
-	string str; stud temp;
+	string str;
 	std::ifstream fd(input);
 	getline(fd, str); // Praleidzia pirma linija
 	while(getline(fd, str)) {
+		stud temp(str);
 		x.push_back(temp);
-		std::istringstream ss(str);
-		ss >> x.back().name >> x.back().lname;
-		int in;
-	    while(ss >> in) if(in <= 10 || in > 0) x.back().nd.push_back(in);
-	    if(x.back().nd.size() > 1) {
-	    	x.back().exam = x.back().nd.back();
-	    	x.back().nd.pop_back();
-		}
-		else if(x.back().nd.size() == 0) {
-			x.back().exam = x.back().nd.back();
-			x.back().nd.back() = 0;
-		}
-		else {
-			x.back().exam = 0;
-			x.back().nd.back() = 0;
-		}
 	}
 	fd.close();
 }
 
 void CmdInput(vector<stud> &x) {
 	using std::cin;
-	string str; stud temp;
+	string str;
     getline(cin, str);  // Ignoruoja pasilikusi \n (getline, nes ignore tarpus priskaiciuoja)
 	cout << "Iveskite mokiniu vardus, pavardes ir pazymius (egzamino pazymys paskutinis, vienas mokinys - viena eilute)\nNorint baigti iveskite tuscia eilute.\n";
 	while(getline(cin, str)) {
 		if(str == "") break;
+		stud temp(str);
 		x.push_back(temp);
-		std::istringstream ss(str);
-		ss >> x.back().name >> x.back().lname;
-		int in;
-	    while(ss >> in) if(in <= 10 || in > 0) x.back().nd.push_back(in);
-	    if(x.back().nd.size() > 1) {
-	    	x.back().exam = x.back().nd.back();
-	    	x.back().nd.pop_back();
-		}
-		else if(x.back().nd.size() == 1) {
-			x.back().exam = x.back().nd.back();
-			x.back().nd.back() = 0;
-		}
-		else {
-			x.back().exam = 0;
-			x.back().nd.push_back(0);
-		}
 	}
 }
 
 void Output(vector<stud> &x) {
 	cout << setw(18) << std::left << "Vardas" << setw(18) << std::left << "Pavarde" << "Galutinis (Vid.) / Galutinis (Med.)\n" <<"------------------------------------------------------------\n";
-	for(stud const& it : x) {
-		cout <<setw(18)<<std::left<<it.name<<setw(18)<<std::left<<it.lname;
-		cout <<std::setw(19)<<std::left<<it.avg<<setw(16)<<std::left<<it.medAvg<<endl;
+	for(stud it : x) {
+		cout <<setw(18)<<std::left<<it.getName()<<setw(18)<<std::left<<it.getLname();
+		cout <<std::setw(19)<<std::left<<it.getAvg()<<setw(16)<<std::left<<it.getMed()<<endl;
 	}
 }
 
 void Output(deque<stud> &x) {
 	cout << setw(18) << std::left << "Vardas" << setw(18) << std::left << "Pavarde" << "Galutinis (Vid.) / Galutinis (Med.)\n" <<"------------------------------------------------------------\n";
-	for(stud const& it : x) {
-		cout <<setw(18)<<std::left<<it.name<<setw(18)<<std::left<<it.lname;
-		cout <<std::setw(19)<<std::left<<it.avg<<setw(16)<<std::left<<it.medAvg<<endl;
+	for(stud it : x) {
+		cout <<setw(18)<<std::left<<it.getName()<<setw(18)<<std::left<<it.getLname();
+		cout <<std::setw(19)<<std::left<<it.getAvg()<<setw(16)<<std::left<<it.getMed()<<endl;
 	}
 }
 
 void Output(list<stud> &x) {
 	cout << setw(18) << std::left << "Vardas" << setw(18) << std::left << "Pavarde" << "Galutinis (Vid.) / Galutinis (Med.)\n" <<"------------------------------------------------------------\n";
-	for(stud const& it : x) {
-		cout <<setw(18)<<std::left<<it.name<<setw(18)<<std::left<<it.lname;
-		cout <<std::setw(19)<<std::left<<it.avg<<setw(16)<<std::left<<it.medAvg<<endl;
+	for(stud it : x) {
+		cout <<setw(18)<<std::left<<it.getName()<<setw(18)<<std::left<<it.getLname();
+		cout <<std::setw(19)<<std::left<<it.getAvg()<<setw(16)<<std::left<<it.getMed()<<endl;
 	}
 }
 
 void Output2file(vector<stud> &x, string out) {
 	std::ofstream fr(out);
 	fr << setw(18) << std::left << "Vardas" << setw(18) << std::left << "Pavarde" << "Galutinis (Vid.) / Galutinis (Med.)\n" <<"------------------------------------------------------------\n";
-	for(stud const& it : x) {
-		fr <<setw(18)<<std::left<<it.name<<setw(18)<<std::left<<it.lname;
-		fr <<std::setw(19)<<std::left<<it.avg<<setw(16)<<std::left<<it.medAvg<<endl;
+	for(stud it : x) {
+		fr <<setw(18)<<std::left<<it.getName()<<setw(18)<<std::left<<it.getLname();
+		fr <<std::setw(19)<<std::left<<it.getAvg()<<setw(16)<<std::left<<it.getMed()<<endl;
 	}
 	fr.close();
 }
@@ -159,9 +100,9 @@ void Output2file(vector<stud> &x, string out) {
 void Output2file(deque<stud> &x, string out) {
 	std::ofstream fr(out);
 	fr << setw(18) << std::left << "Vardas" << setw(18) << std::left << "Pavarde" << "Galutinis (Vid.) / Galutinis (Med.)\n" <<"------------------------------------------------------------\n";
-	for(stud const& it : x) {
-		fr <<setw(18)<<std::left<<it.name<<setw(18)<<std::left<<it.lname;
-		fr <<std::setw(19)<<std::left<<it.avg<<setw(16)<<std::left<<it.medAvg<<endl;
+	for(stud it : x) {
+		fr <<setw(18)<<std::left<<it.getName()<<setw(18)<<std::left<<it.getLname();
+		fr <<std::setw(19)<<std::left<<it.getAvg()<<setw(16)<<std::left<<it.getMed()<<endl;
 	}
 	fr.close();
 }
@@ -169,21 +110,16 @@ void Output2file(deque<stud> &x, string out) {
 void Output2file(list<stud> &x, string out) {
 	std::ofstream fr(out);
 	fr << setw(18) << std::left << "Vardas" << setw(18) << std::left << "Pavarde" << "Galutinis (Vid.) / Galutinis (Med.)\n" <<"------------------------------------------------------------\n";
-	for(stud const& it : x) {
-		fr <<setw(18)<<std::left<<it.name<<setw(18)<<std::left<<it.lname;
-		fr <<std::setw(19)<<std::left<<it.avg<<setw(16)<<std::left<<it.medAvg<<endl;
+	for(stud it : x) {
+		fr <<setw(18)<<std::left<<it.getName()<<setw(18)<<std::left<<it.getLname();
+		fr <<std::setw(19)<<std::left<<it.getAvg()<<setw(16)<<std::left<<it.getMed()<<endl;
 	}
 	fr.close();
 }
 
-void OutputTime(int i, timer fileGen, timer fileRead, timer calc, timer pick, timer sortName, timer out) {
-	cout << std::setprecision(5) << std::fixed << "| " << setw(9) << std::left << std::fixed << i << "|  " << setw(11) << fileGen.duration() << "| " << setw(10) << fileRead.duration() << "| " << setw(13) << calc.duration() << "| ";
-	cout << setw(11) << pick.duration() << "| " << setw(11) << sortName.duration() << "| " << setw(8) << out.duration() << "| " << setw(8) << fileGen.duration()+fileRead.duration()+calc.duration()+pick.duration() << "|\n";
-}
-
-void OutputTime(timer calc, timer pick, timer sort, timer sortName, timer out) {
-	cout << std::setprecision(5) << std::fixed << "| " << setw(13) << calc.duration() << "| ";
-	cout << setw(11) << pick.duration() << "| " << setw(11) << sortName.duration() << "| " << setw(8) << out.duration() << "| " << setw(8) << calc.duration()+pick.duration() << "|\n";
+void OutputTime(int i, timer fileGen, timer fileRead, timer pick, timer sortName, timer out) {
+	cout << std::setprecision(5) << std::fixed << "| " << setw(9) << std::left << std::fixed << i << "|  " << setw(11) << fileGen.duration() << "| " << setw(10) << fileRead.duration() << "| ";
+	cout << setw(11) << pick.duration() << "| " << setw(11) << sortName.duration() << "| " << setw(8) << out.duration() << "| " << setw(8) << fileGen.duration()+fileRead.duration()+pick.duration() << "|\n";
 }
 
 string whichFile(int n) {

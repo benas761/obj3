@@ -24,10 +24,8 @@ int main() {
 	else {
 		vector<stud> x;
 		CmdInput(x);
-		AssignGrades(x);
 		std::vector<stud> good, bad;
-		std::sort(x.begin(), x.end(), 
-			[](stud &a, stud &b){ return a.name<b.name; });
+		std::sort(x.begin(), x.end(), cmprName);
         Output2file(x, "cmdOutput.txt");
         Output(x);
 	}

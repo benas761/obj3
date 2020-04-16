@@ -1,6 +1,6 @@
 #include "imports.h"
 
-void stud::finput(string str) {
+stud::stud(string str) {
 	std::istringstream ss(str);
 	ss >> name >> lname;
 	int in;

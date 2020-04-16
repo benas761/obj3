@@ -1,7 +1,7 @@
 #include "imports.h"
 
 bool cmprName(stud &a, stud &b) { return a.getName() < b.getName(); }
-bool cmprAvg(stud &a, stud &b) { return a.getAvg() < b.getAvg(); }
+bool cmprAvg(stud &a, stud &b) { return a.getAvg() > b.getAvg(); }
 bool cmprTo5(stud &a) { return a.getAvg()<5; }
 
 float Final(float avg, float m) {
@@ -34,6 +34,7 @@ void Pick(deque<stud>& x, deque<stud>& bad) {
 
 void Pick(list<stud>& x, list<stud>& bad) {
     x.sort(cmprAvg);
+    cout << endl;
     while(cmprTo5(x.back())) {
         bad.push_back(x.back());
         x.pop_back();
@@ -96,12 +97,14 @@ void Run(vector<stud>& good, vector<stud>& bad, bool pickChoice){
 }
 
 void Run(deque<stud>& good, deque<stud>& bad){
-    cout << "|  Dydis   | Generavimas | Skaitymas | Skaiciavimas | Atrinkimas | Rikiavimas | Rasymas |   Viso  |\n";
-    for(int i=1000; i<pow(10, 8); i*=10) {
-        timer fileGen;
-        string input = whichFile(i); // Tikrina ar yra kursiokai.txt failas. Jeigu nera, kokio dydzio testo faila sukurti.
-        fileGen.stop();
-        try {
+    string input = whichFile(0); // Tikrina ar yra kursiokai.txt failas. Jeigu nera, kokio dydzio testo faila sukurti.
+    if(input != "kursiokai.txt") {
+        cout << "|  Dydis   | Generavimas | Skaitymas | Atrinkimas | Rikiavimas | Rasymas |   Viso  |\n";
+        for(int i=1000; i<pow(10, 8); i*=10) {
+            timer fileGen;
+            string input = whichFile(i);
+            fileGen.stop();
+
             timer fileRead;
             FileInput(good, input);
             fileRead.stop();
@@ -112,7 +115,8 @@ void Run(deque<stud>& good, deque<stud>& bad){
 
             timer sortName;
             sort(good.begin(), good.end(), cmprName);
-            sort(bad.begin(), bad.end(),  cmprName); 
+            sort(bad.begin(), bad.end(), cmprName); 
+            sortName.stop();
 
             timer out;
             Output2file(good, "Patenkinami.txt");
@@ -120,21 +124,31 @@ void Run(deque<stud>& good, deque<stud>& bad){
             out.stop();
 
             OutputTime(i, fileGen, fileRead, pick, sortName, out);
-
-            } catch(std::exception& e) {
-            cout << "Papildykite kursiokai.txt faila arba ji istrinkite" << endl;
-            break;
         }
+    }
+    else try {
+        FileInput(good, input);
+        Pick(good, bad);
+        Output2file(good, "Patenkinami.txt");
+        Output2file(bad,  "Nepatenkinami.txt");
+        cout << "Nepatenkinami:\n";
+        Output(bad);
+        cout << "Patenkinami:\n";
+        Output(good);
+        } catch(std::exception& e) {
+        cout << "Papildykite kursiokai.txt faila arba ji istrinkite" << endl;
     }
 }
 
 void Run(list<stud>& good, list<stud>& bad){
-    cout << "|  Dydis   | Generavimas | Skaitymas | Skaiciavimas | Atrinkimas | Rikiavimas | Rasymas |   Viso  |\n";
-    for(int i=1000; i<pow(10, 8); i*=10) {
-        timer fileGen;
-        string input = whichFile(i); // Tikrina ar yra kursiokai.txt failas. Jeigu nera, kokio dydzio testo faila sukurti.
-        fileGen.stop();
-        try {
+    string input = whichFile(0); // Tikrina ar yra kursiokai.txt failas. Jeigu nera, kokio dydzio testo faila sukurti.
+    if(input != "kursiokai.txt") {
+        cout << "|  Dydis   | Generavimas | Skaitymas | Atrinkimas | Rikiavimas | Rasymas |   Viso  |\n";
+        for(int i=1000; i<pow(10, 8); i*=10) {
+            timer fileGen;
+            string input = whichFile(i);
+            fileGen.stop();
+
             timer fileRead;
             FileInput(good, input);
             fileRead.stop();
@@ -145,7 +159,7 @@ void Run(list<stud>& good, list<stud>& bad){
 
             timer sortName;
             good.sort(cmprName);
-            good.sort(cmprName);
+            bad.sort(cmprName); 
             sortName.stop();
 
             timer out;
@@ -154,10 +168,18 @@ void Run(list<stud>& good, list<stud>& bad){
             out.stop();
 
             OutputTime(i, fileGen, fileRead, pick, sortName, out);
-
-            } catch(std::exception& e) {
-            cout << "Papildykite kursiokai.txt faila arba ji istrinkite" << endl;
-            break;
         }
+    }
+    else try {
+        FileInput(good, input);
+        Pick(good, bad);
+        Output2file(good, "Patenkinami.txt");
+        Output2file(bad,  "Nepatenkinami.txt");
+        cout << "Nepatenkinami:\n";
+        Output(bad);
+        cout << "Patenkinami:\n";
+        Output(good);
+        } catch(std::exception& e) {
+        cout << "Papildykite kursiokai.txt faila arba ji istrinkite" << endl;
     }
 }

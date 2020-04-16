@@ -24,7 +24,7 @@ class stud {
 	int exam;
 	vector<int> nd;
 public:
-	void finput(string);
+	stud(string);
 	void Average();
 	void Median();
 	inline string getName() { return name; }

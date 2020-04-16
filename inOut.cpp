@@ -18,47 +18,48 @@ void CreateInput(int n, int m) { // pakeista i sablona
 }
 
 void FileInput(vector<stud> &x, string input) {
-	string str; stud temp;
+	string str;
 	std::ifstream fd(input);
 	getline(fd, str); // Praleidzia pirma linija
 	while(getline(fd, str)) {
+		stud temp(str);
 		x.push_back(temp);
-		x.back().finput(str);
+		//x.back().finput(str);
 	}
 	fd.close();
 }
 
 void FileInput(deque<stud> &x, string input) {
-	string str; stud temp;
+	string str;
 	std::ifstream fd(input);
 	getline(fd, str); // Praleidzia pirma linija
 	while(getline(fd, str)) {
+		stud temp(str);
 		x.push_back(temp);
-		x.back().finput(str);
 	}
 	fd.close();
 }
 
 void FileInput(list<stud> &x, string input) {
-	string str; stud temp;
+	string str;
 	std::ifstream fd(input);
 	getline(fd, str); // Praleidzia pirma linija
 	while(getline(fd, str)) {
+		stud temp(str);
 		x.push_back(temp);
-		x.back().finput(str);
 	}
 	fd.close();
 }
 
 void CmdInput(vector<stud> &x) {
 	using std::cin;
-	string str; stud temp;
+	string str;
     getline(cin, str);  // Ignoruoja pasilikusi \n (getline, nes ignore tarpus priskaiciuoja)
 	cout << "Iveskite mokiniu vardus, pavardes ir pazymius (egzamino pazymys paskutinis, vienas mokinys - viena eilute)\nNorint baigti iveskite tuscia eilute.\n";
 	while(getline(cin, str)) {
 		if(str == "") break;
+		stud temp(str);
 		x.push_back(temp);
-		x.back().finput(str);
 	}
 }
 

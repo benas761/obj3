@@ -6,6 +6,7 @@ v1.1 pakeitimai:
   - Vidurkio ir medianos funkcijos perkeltos į klasę ir dabar yra kviečiamos kostruktiuje.
 - Pataisytos rinkimo (pick) funkcijos, kurios netinkamai rinko dėl netinkamos rūšiavimo funkcijos.
 - Klasės vektoriaus laikai:
+
 |  Dydis   | Generavimas | Skaitymas | Atrinkimas | Rikiavimas | Rasymas |   Viso  |
 |:--------:|:-----------:|:---------:|:----------:|:----------:|:--------|:-------:|
 | 1000     |  0.00704    | 0.00272   | 0.00028    | 0.00220    | 0.00388 | 0.01004 |
@@ -13,6 +14,7 @@ v1.1 pakeitimai:
 | 100000   |  0.32745    | 0.26163   | 0.02792    | 0.39831    | 0.34491 | 0.61699 |
 | 1000000  |  3.71315    | 2.61334   | 0.26712    | 4.39285    | 4.22985 | 6.59361 |
 | 10000000 |  41.32082   | 30.82113  | 3.06894    | 58.76650   | 47.80699| 75.21089|
+
 - Vektoriaus optimizuoti laikai:
   - Pirmas optimizavimo lygis:
 
@@ -29,7 +31,9 @@ v1.1 pakeitimai:
 | 1000000  |  3.73011    | 2.56725   | 0.27212    | 4.68611    | 4.69143 | 6.56948 |
 
   - Trečias optimizavimo lygis:
+  
 |  Dydis   | Generavimas | Skaitymas | Atrinkimas | Rikiavimas | Rasymas |   Viso  |
+|:--------:|:-----------:|:---------:|:----------:|:----------:|:--------|:-------:|
 | 100000   |  0.32807    | 0.24075   | 0.02700    | 0.30276    | 0.33292 | 0.59582 |
 | 1000000  |  3.60244    | 2.57579   | 0.28109    | 4.86327    | 3.91890 | 6.45932 |
 

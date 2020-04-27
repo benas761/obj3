@@ -9,13 +9,13 @@ stud::stud(string str) {
   		exam = nd.back();
     	nd.pop_back();
 	}
-	else if(nd.size() == 0) {
+	else if(nd.size() == 1) {
 		exam = nd.back();
 		nd.back() = 0;
 	}
 	else {
 		exam = 0;
-		nd.back() = 0;
+		nd.push_back(0);
 	}
 	Average();
 	Median();
@@ -67,7 +67,7 @@ bool stud::operator >= (stud st){
 	else return false;
 }
 
-std::ostream& stud::operator << (std::ostream& fr) {
-	fr <<setw(18)<<std::left<<getName()<<setw(18)<<std::left<<getLname();
-	fr <<std::setw(19)<<std::left<<getAvg()<<setw(16)<<std::left<<getMed()<<endl;
+std::ostream& operator << (std::ostream& fr, stud& st) {
+	fr <<setw(18)<<std::left<<st.getName()<<setw(18)<<std::left<<st.getLname();
+	fr <<std::setw(19)<<std::left<<st.getAvg()<<setw(16)<<std::left<<st.getMed()<<endl;
 }

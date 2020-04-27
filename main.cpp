@@ -27,7 +27,8 @@ int main() {
 		std::vector<stud> good, bad;
 		std::sort(x.begin(), x.end(), cmprName);
         Output2file(x, "cmdOutput.txt");
-        Output(x);
+        cout<<setw(18)<<std::left<<"Vardas"<<setw(18)<<std::left<<"Pavarde"<<"Galutinis (Vid.) / Galutinis (Med.)\n"<<"------------------------------------------------------------\n";
+        for(stud& it : x) cout << it;
 	}
 	return 0;
 }

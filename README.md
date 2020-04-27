@@ -1,5 +1,11 @@
 # obj3
 
+v1.2 pakeitimai:
+- Pridėti operatoriai:
+  - Palyginimų operatoriai, kurie lygina pažymius (išskyrus ==, kuris lygina vardus).
+  - Priskirimo operatorius (=).
+- Panaikinta cmprAvg funkcija, kadangi ją pakeičia palyginimo operatoriai.
+
 v1.1 pakeitimai:
 - Pakeista stud struktūra į klasę:
   - Sukurtas konstruktorius, nuskaitantis duomenis iš nusiųsto eilutės.

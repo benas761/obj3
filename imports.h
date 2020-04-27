@@ -38,7 +38,7 @@ public:
 	bool operator <  (stud);
 	bool operator <= (stud);
 	bool operator >= (stud);
-	std::ostream& operator << (std::ostream&);
+	friend std::ostream& operator << (std::ostream&, stud&);
 };
 
 class timer{
@@ -60,9 +60,6 @@ void FileInput(vector<stud>&, string);
 void FileInput(deque<stud>&, string);
 void FileInput(list<stud>&, string);
 void CmdInput(vector<stud>&);
-void Output(vector<stud>&);
-void Output(deque<stud>&);
-void Output(list<stud>&);
 void Output2file(vector<stud>&, string);
 void Output2file(deque<stud>&, string);
 void Output2file(list<stud>&, string);

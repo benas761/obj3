@@ -24,7 +24,6 @@ void FileInput(vector<stud> &x, string input) {
 	while(getline(fd, str)) {
 		stud temp(str);
 		x.push_back(temp);
-		//x.back().finput(str);
 	}
 	fd.close();
 }
@@ -63,57 +62,24 @@ void CmdInput(vector<stud> &x) {
 	}
 }
 
-void Output(vector<stud> &x) {
-	cout << setw(18) << std::left << "Vardas" << setw(18) << std::left << "Pavarde" << "Galutinis (Vid.) / Galutinis (Med.)\n" <<"------------------------------------------------------------\n";
-	for(stud it : x) {
-		cout <<setw(18)<<std::left<<it.getName()<<setw(18)<<std::left<<it.getLname();
-		cout <<std::setw(19)<<std::left<<it.getAvg()<<setw(16)<<std::left<<it.getMed()<<endl;
-	}
-}
-
-void Output(deque<stud> &x) {
-	cout << setw(18) << std::left << "Vardas" << setw(18) << std::left << "Pavarde" << "Galutinis (Vid.) / Galutinis (Med.)\n" <<"------------------------------------------------------------\n";
-	for(stud it : x) {
-		cout <<setw(18)<<std::left<<it.getName()<<setw(18)<<std::left<<it.getLname();
-		cout <<std::setw(19)<<std::left<<it.getAvg()<<setw(16)<<std::left<<it.getMed()<<endl;
-	}
-}
-
-void Output(list<stud> &x) {
-	cout << setw(18) << std::left << "Vardas" << setw(18) << std::left << "Pavarde" << "Galutinis (Vid.) / Galutinis (Med.)\n" <<"------------------------------------------------------------\n";
-	for(stud it : x) {
-		cout <<setw(18)<<std::left<<it.getName()<<setw(18)<<std::left<<it.getLname();
-		cout <<std::setw(19)<<std::left<<it.getAvg()<<setw(16)<<std::left<<it.getMed()<<endl;
-	}
-}
-
 void Output2file(vector<stud> &x, string out) {
 	std::ofstream fr(out);
 	fr << setw(18) << std::left << "Vardas" << setw(18) << std::left << "Pavarde" << "Galutinis (Vid.) / Galutinis (Med.)\n" <<"------------------------------------------------------------\n";
-	for(stud it : x) {
-		fr <<setw(18)<<std::left<<it.getName()<<setw(18)<<std::left<<it.getLname();
-		fr <<std::setw(19)<<std::left<<it.getAvg()<<setw(16)<<std::left<<it.getMed()<<endl;
-	}
+	for(stud it : x) fr << it;
 	fr.close();
 }
 
 void Output2file(deque<stud> &x, string out) {
 	std::ofstream fr(out);
 	fr << setw(18) << std::left << "Vardas" << setw(18) << std::left << "Pavarde" << "Galutinis (Vid.) / Galutinis (Med.)\n" <<"------------------------------------------------------------\n";
-	for(stud it : x) {
-		fr <<setw(18)<<std::left<<it.getName()<<setw(18)<<std::left<<it.getLname();
-		fr <<std::setw(19)<<std::left<<it.getAvg()<<setw(16)<<std::left<<it.getMed()<<endl;
-	}
+	for(stud it : x) fr << it;
 	fr.close();
 }
 
 void Output2file(list<stud> &x, string out) {
 	std::ofstream fr(out);
 	fr << setw(18) << std::left << "Vardas" << setw(18) << std::left << "Pavarde" << "Galutinis (Vid.) / Galutinis (Med.)\n" <<"------------------------------------------------------------\n";
-	for(stud it : x) {
-		fr <<setw(18)<<std::left<<it.getName()<<setw(18)<<std::left<<it.getLname();
-		fr <<std::setw(19)<<std::left<<it.getAvg()<<setw(16)<<std::left<<it.getMed()<<endl;
-	}
+	for(stud it : x) fr << it;
 	fr.close();
 }
 

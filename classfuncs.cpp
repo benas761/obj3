@@ -15,7 +15,7 @@ stud::stud(string str) {
 	}
 	else {
 		exam = 0;
-		nd.back() = 0;
+		nd.push_back(0);
 	}
 	Average();
 	Median();

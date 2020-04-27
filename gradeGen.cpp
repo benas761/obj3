@@ -93,9 +93,12 @@ void Run(vector<stud>& good, vector<stud>& bad, bool pickChoice){
         Output2file(bad,  "Nepatenkinami.txt");
         
         cout << "Nepatenkinami:\n";
-        Output(bad);
-        cout << "Patenkinami:\n";
-        Output(good);
+        cout<<setw(18)<<std::left<<"Vardas"<<setw(18)<<std::left<<"Pavarde"<<"Galutinis (Vid.) / Galutinis (Med.)\n"<<"------------------------------------------------------------\n";
+        for(stud& it : bad) cout << it;
+        cout << "\nPatenkinami:\n";
+        cout<<setw(18)<<std::left<<"Vardas"<<setw(18)<<std::left<<"Pavarde"<<"Galutinis (Vid.) / Galutinis (Med.)\n"<<"------------------------------------------------------------\n";
+        for(stud& it : good) cout << it;
+
         } catch(std::exception& e) {
         cout << "Papildykite kursiokai.txt faila arba ji istrinkite" << endl;
     }
@@ -142,9 +145,12 @@ void Run(deque<stud>& good, deque<stud>& bad){
         Output2file(bad,  "Nepatenkinami.txt");
         
         cout << "Nepatenkinami:\n";
-        Output(bad);
-        cout << "Patenkinami:\n";
-        Output(good);
+        cout<<setw(18)<<std::left<<"Vardas"<<setw(18)<<std::left<<"Pavarde"<<"Galutinis (Vid.) / Galutinis (Med.)\n"<<"------------------------------------------------------------\n";
+        for(stud& it : bad) cout << it;
+        cout << "\nPatenkinami:\n";
+        cout<<setw(18)<<std::left<<"Vardas"<<setw(18)<<std::left<<"Pavarde"<<"Galutinis (Vid.) / Galutinis (Med.)\n"<<"------------------------------------------------------------\n";
+        for(stud& it : good) cout << it;
+
         } catch(std::exception& e) {
         cout << "Papildykite kursiokai.txt faila arba ji istrinkite" << endl;
     }
@@ -191,9 +197,12 @@ void Run(list<stud>& good, list<stud>& bad){
         Output2file(bad,  "Nepatenkinami.txt");
         
         cout << "Nepatenkinami:\n";
-        Output(bad);
-        cout << "Patenkinami:\n";
-        Output(good);
+        cout<<setw(18)<<std::left<<"Vardas"<<setw(18)<<std::left<<"Pavarde"<<"Galutinis (Vid.) / Galutinis (Med.)\n"<<"------------------------------------------------------------\n";
+        for(stud& it : bad) cout << it;
+        cout << "\nPatenkinami:\n";
+        cout<<setw(18)<<std::left<<"Vardas"<<setw(18)<<std::left<<"Pavarde"<<"Galutinis (Vid.) / Galutinis (Med.)\n"<<"------------------------------------------------------------\n";
+        for(stud& it : good) cout << it;
+
         } catch(std::exception& e) {
         cout << "Papildykite kursiokai.txt faila arba ji istrinkite" << endl;
     }

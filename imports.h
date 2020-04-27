@@ -1,10 +1,10 @@
 #include <fstream>
 #include <iostream>
+#include <iomanip>
 #include <vector>
 #include <deque>
 #include <list>
 #include <sstream>
-#include <iomanip>
 #include <random>
 #include <chrono>
 #include <algorithm>
@@ -31,6 +31,14 @@ public:
 	inline string getLname() { return lname; }
 	inline float getMed() { return medAvg; }
 	inline float getAvg() { return avg; }
+	stud& operator =  (const stud&);
+	bool operator == (stud&); // Netikrina ar namu darbu balai lygus.
+	bool operator != (stud);
+	bool operator >  (stud);
+	bool operator <  (stud);
+	bool operator <= (stud);
+	bool operator >= (stud);
+	std::ostream& operator << (std::ostream&);
 };
 
 class timer{

@@ -1,7 +1,7 @@
 #include "imports.h"
 
 bool cmprName(stud &a, stud &b) { return a.getName() < b.getName(); }
-bool cmprAvg(stud &a, stud &b) { return a.getAvg() > b.getAvg(); }
+//bool cmprAvg(stud &a, stud &b) { return a.getAvg() > b.getAvg(); }
 bool cmprTo5(stud &a) { return a.getAvg()<5; }
 
 float Final(float avg, float m) {
@@ -9,7 +9,7 @@ float Final(float avg, float m) {
 }
 
 void Pick(vector<stud>& x, vector<stud>& bad) {
-    sort(x.begin(), x.end(), cmprAvg);
+    sort(x.rbegin(), x.rend());
     while(cmprTo5(x.back())) {
         bad.push_back(x.back());
         x.pop_back();
@@ -24,7 +24,7 @@ void ImprovedPick(vector<stud>& x, vector<stud>& bad) {
 }
 
 void Pick(deque<stud>& x, deque<stud>& bad) {
-    sort(x.begin(), x.end(), cmprAvg);
+    sort(x.rbegin(), x.rend());
 
     while(x.back().getAvg()<5) {
         bad.push_back(x.back());
@@ -33,7 +33,7 @@ void Pick(deque<stud>& x, deque<stud>& bad) {
 }
 
 void Pick(list<stud>& x, list<stud>& bad) {
-    x.sort(cmprAvg);
+    x.sort(); // Needs reversing!
     cout << endl;
     while(cmprTo5(x.back())) {
         bad.push_back(x.back());
@@ -66,6 +66,7 @@ void Run(vector<stud>& good, vector<stud>& bad, bool pickChoice){
             timer pick;
             if(!pickChoice) Pick(good, bad);
             else   ImprovedPick(good, bad);
+            cout << "yo! I exist and work, yo!\n";
             pick.stop();
 
             timer sortName;

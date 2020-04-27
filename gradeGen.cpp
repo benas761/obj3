@@ -33,7 +33,7 @@ void Pick(deque<stud>& x, deque<stud>& bad) {
 }
 
 void Pick(list<stud>& x, list<stud>& bad) {
-    x.sort(); // Needs reversing!
+    x.sort([](stud& a, stud& b) { return a.getAvg() > b.getAvg(); });
     cout << endl;
     while(cmprTo5(x.back())) {
         bad.push_back(x.back());
@@ -66,7 +66,6 @@ void Run(vector<stud>& good, vector<stud>& bad, bool pickChoice){
             timer pick;
             if(!pickChoice) Pick(good, bad);
             else   ImprovedPick(good, bad);
-            cout << "yo! I exist and work, yo!\n";
             pick.stop();
 
             timer sortName;
@@ -86,8 +85,13 @@ void Run(vector<stud>& good, vector<stud>& bad, bool pickChoice){
         FileInput(good, input);
         if(!pickChoice) Pick(good, bad);
         else   ImprovedPick(good, bad);
+
+        sort(good.begin(), good.end(), cmprName);
+        sort(bad.begin(), bad.end(), cmprName); 
+        
         Output2file(good, "Patenkinami.txt");
         Output2file(bad,  "Nepatenkinami.txt");
+        
         cout << "Nepatenkinami:\n";
         Output(bad);
         cout << "Patenkinami:\n";
@@ -130,8 +134,13 @@ void Run(deque<stud>& good, deque<stud>& bad){
     else try {
         FileInput(good, input);
         Pick(good, bad);
+
+        sort(good.begin(), good.end(), cmprName);
+        sort(bad.begin(), bad.end(), cmprName);
+
         Output2file(good, "Patenkinami.txt");
         Output2file(bad,  "Nepatenkinami.txt");
+        
         cout << "Nepatenkinami:\n";
         Output(bad);
         cout << "Patenkinami:\n";
@@ -174,8 +183,13 @@ void Run(list<stud>& good, list<stud>& bad){
     else try {
         FileInput(good, input);
         Pick(good, bad);
+
+        good.sort(cmprName);
+        bad.sort(cmprName); 
+        
         Output2file(good, "Patenkinami.txt");
         Output2file(bad,  "Nepatenkinami.txt");
+        
         cout << "Nepatenkinami:\n";
         Output(bad);
         cout << "Patenkinami:\n";

@@ -21,6 +21,10 @@ stud::stud(string str) {
 	Median();
 }
 
+float stud::Final(float avg, float m) {
+    return (round(100.0*(0.4*avg + 0.6*m))/100.0); // Rounds to 2 decimal points
+}
+
 void stud::Average() {
 	avg = Final(std::accumulate(nd.begin(), nd.end(), 0.0)/nd.size(), exam);
 }

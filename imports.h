@@ -27,6 +27,7 @@ public:
 	stud(string);
 	void Average();
 	void Median();
+	float Final(float avg, float m);
 	inline string getName() { return name; }
 	inline string getLname() { return lname; }
 	inline float getMed() { return medAvg; }

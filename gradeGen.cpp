@@ -4,10 +4,6 @@ bool cmprName(stud &a, stud &b) { return a.getName() < b.getName(); }
 //bool cmprAvg(stud &a, stud &b) { return a.getAvg() > b.getAvg(); }
 bool cmprTo5(stud &a) { return a.getAvg()<5; }
 
-float Final(float avg, float m) {
-    return (round(100.0*(0.4*avg + 0.6*m))/100.0); // Rounds to 2 decimal points
-}
-
 void Pick(vector<stud>& x, vector<stud>& bad) {
     sort(x.rbegin(), x.rend());
     while(cmprTo5(x.back())) {

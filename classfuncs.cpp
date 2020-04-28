@@ -22,7 +22,7 @@ stud::stud(string str) {
 }
 
 void stud::Average() {
-	avg = std::accumulate(nd.begin(), nd.end(), 0.0)/nd.size();
+	avg = Final(std::accumulate(nd.begin(), nd.end(), 0.0)/nd.size(), exam);
 }
 
 void stud::Median() {

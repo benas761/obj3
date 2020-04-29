@@ -18,9 +18,13 @@ using std::endl;
 using std::setw;
 using std::sort;
 
+class human {
+protected:
+	string name, lname;
+	virtual float Final(float avg, float m) = 0;
+};
 
-class stud {
-	strung name, lname;
+class stud : human {
 	float medAvg, avg;
 	int exam;
 	vector<int> nd;

@@ -1,5 +1,8 @@
 # obj3
 
+v1.5 pakeitimas:
+- Pridėta abstrakti bazinė klasė *human*, sauganti mokinio vardą ir pavardę.
+
 v1.2 pakeitimai:
 - Pridėti operatoriai:
   - Palyginimų operatoriai, kurie lygina pažymius (išskyrus ==, kuris lygina vardus).

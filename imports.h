@@ -18,13 +18,18 @@ using std::endl;
 using std::setw;
 using std::sort;
 
-class stud {
+class human{
 	string name, lname;
+};
+
+class stud {
 	float medAvg, avg;
 	int exam;
 	vector<int> nd;
 public:
+	stud() {}
 	stud(string);
+	~stud() {}
 	void Average();
 	void Median();
 	float Final(float avg, float m);

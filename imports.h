@@ -18,11 +18,9 @@ using std::endl;
 using std::setw;
 using std::sort;
 
-class human{
-	string name, lname;
-};
 
 class stud {
+	strung name, lname;
 	float medAvg, avg;
 	int exam;
 	vector<int> nd;

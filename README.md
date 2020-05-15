@@ -11,17 +11,19 @@ Paleidimo instrukcija:
   - Parsisiųsti codeblocks ir kompiliatorių.
   - Atsidaryti .cbp failą.
   - Paspausti *build and run* mygtuką.
+  
 Unit testų paleidimui:
 - Unit tests kataloge atsidaryti projekto failą
 - Paspausti *build and run* mygtuką.
 
 v2.0 pakeitimai:
+ - Pridėta html doxygen dokumentacija.
  - Pridėti 3 unit testai, naudojantys catch2, ir jų projektas paleidimui "Unit tests" aplanke:
    - Stud konstruktoriaus testas
    - Operatoriu testas
    - Ivesties ir rinkimo testas
- - Pridėta html doxygen dokumentacija.
- Testo pavyzdys:
+   - Testo pavyzdys:
+   - ![](https://github.com/benas761/obj3/blob/v2.0/Unit%20tests/unit%20pav.png)
 
 v1.5 pakeitimas:
 - Pridėta abstrakti bazinė klasė *human*, sauganti mokinio vardą ir pavardę.

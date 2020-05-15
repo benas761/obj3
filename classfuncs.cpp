@@ -30,7 +30,7 @@ void stud::Average() {
 }
 
 void stud::Median() {
-    int i = nd.size()/2;
+    int i = nd.size()/2-1;
     sort(nd.begin(), nd.end());
     if(nd.size()%2 == 0) {
         medAvg = Final((nd[i]+nd[i+1])/2.0, exam);

@@ -1,5 +1,28 @@
 # obj3
 
+Paleidimo instrukcija:
+- Ant linux sistemos:
+  - Komandinėje eilutėje atsidaryti aplanką, kuriame yra visi .cpp ir .h failai.
+  - Parašyti: 'make' norint sukurti programą.
+  - Parašyti 'make opt1' arba 'make obj2' arba 'make obj3' norint sukurti programą su optimizavimo lygiu.
+  - Parašyti './main' norint paleisti programą.
+  - Parašyti 'make clean' norint ištrinti visus .o ir .txt failus.
+- Ant windows sistemos:
+  - Parsisiųsti codeblocks ir kompiliatorių.
+  - Atsidaryti .cbp failą.
+  - Paspausti *build and run* mygtuką.
+Unit testų paleidimui:
+- Unit tests kataloge atsidaryti projekto failą
+- Paspausti *build and run* mygtuką.
+
+v2.0 pakeitimai:
+ - Pridėti 3 unit testai, naudojantys catch2, ir jų projektas paleidimui "Unit tests" aplanke:
+   - Stud konstruktoriaus testas
+   - Operatoriu testas
+   - Ivesties ir rinkimo testas
+ - Pridėta html doxygen dokumentacija.
+ Testo pavyzdys:
+
 v1.5 pakeitimas:
 - Pridėta abstrakti bazinė klasė *human*, sauganti mokinio vardą ir pavardę.
 
@@ -141,18 +164,6 @@ Skaitymas - sugeneruoto failo skaitymas.
 Skaičiavimas - pažymių pagal vidurkį ir medianą skaičiavimas.
 Atrinkimas - duomenų išrinkimas pagal paskutinį balą, skaičiuotą pagal vidurkį. Čia vyksta rikiavimas.
 Rašymas - duomenų rašymas į 2 failus pagal atrinkimą.
-
-Paleidimo instrukcija:
-- Ant linux sistemos:
-  - Komandinėje eilutėje atsidaryti aplanką, kuriame yra visi .cpp ir .h failai.
-  - Parašyti: 'make' norint sukurti programą.
-  - Parašyti 'make opt1' arba 'make obj2' arba 'make obj3' norint sukurti programą su optimizavimo lygiu.
-  - Parašyti './main' norint paleisti programą.
-  - Parašyti 'make clean' norint ištrinti visus .o ir .txt failus.
-- Ant windows sistemos:
-  - Parsisiųsti codeblocks ir kompiliatorių.
-  - Atsidaryti .cbp failą.
-  - Paspausti *build and run* mygtuką.
 
 Sistemos aprašymas:
 - Intel(R) Core(TM) i5-8265U CPU @ 1.60GH

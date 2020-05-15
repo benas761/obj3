@@ -2,7 +2,7 @@
 
 
 int main() {
-	bool inChoice; int typeChoice;
+    bool inChoice; int typeChoice;
 	Ask(inChoice, typeChoice);
 	if(inChoice) {
 		if(typeChoice == 0) {

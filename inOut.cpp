@@ -1,10 +1,10 @@
 #include "imports.h"
 
-void CreateInput(int n, int m) { // pakeista i sablona
+void CreateInput(int n, int m) {
 	std::random_device rd;
 	std::mt19937 mt0(rd());
 	std::uniform_int_distribution<int> grades(1, 10);
-	std::ofstream fr("generated.txt"); // one change only pls
+	std::ofstream fr("generated.txt");
 	fr << setw(33) << std::left << "Vardas" << setw(30) << std::left << "Pavarde";
 	for(int j = 0; j < m; j++) fr << setw(3) << std::right << j+1 << "nd";
 	fr << setw(5) << "egz." << endl;

@@ -1,7 +1,6 @@
 #include "imports.h"
 
 bool cmprName(stud &a, stud &b) { return a.getName() < b.getName(); }
-//bool cmprAvg(stud &a, stud &b) { return a.getAvg() > b.getAvg(); }
 bool cmprTo5(stud &a) { return a.getAvg()<5; }
 
 void Pick(vector<stud>& x, vector<stud>& bad) {
@@ -47,7 +46,7 @@ void Ask(bool& inChoice, int& typeChoice){
 }
 
 void Run(vector<stud>& good, vector<stud>& bad, bool pickChoice){
-    string input = whichFile(0); // Tikrina ar yra kursiokai.txt failas. Jeigu nera, kokio dydzio testo faila sukurti.
+    string input = whichFile(0);
     if(input != "kursiokai.txt") {
         cout << "|  Dydis   | Generavimas | Skaitymas | Atrinkimas | Rikiavimas | Rasymas |   Viso  |\n";
         for(int i=1000; i<pow(10, 8); i*=10) {
@@ -66,7 +65,7 @@ void Run(vector<stud>& good, vector<stud>& bad, bool pickChoice){
 
             timer sortName;
             sort(good.begin(), good.end(), cmprName);
-            sort(bad.begin(), bad.end(), cmprName); 
+            sort(bad.begin(), bad.end(), cmprName);
             sortName.stop();
 
             timer out;
@@ -83,11 +82,11 @@ void Run(vector<stud>& good, vector<stud>& bad, bool pickChoice){
         else   ImprovedPick(good, bad);
 
         sort(good.begin(), good.end(), cmprName);
-        sort(bad.begin(), bad.end(), cmprName); 
-        
+        sort(bad.begin(), bad.end(), cmprName);
+
         Output2file(good, "Patenkinami.txt");
         Output2file(bad,  "Nepatenkinami.txt");
-        
+
         cout << "Nepatenkinami:\n";
         cout<<setw(18)<<std::left<<"Vardas"<<setw(18)<<std::left<<"Pavarde"<<"Galutinis (Vid.) / Galutinis (Med.)\n"<<"------------------------------------------------------------\n";
         for(stud& it : bad) cout << it;
@@ -119,7 +118,7 @@ void Run(deque<stud>& good, deque<stud>& bad){
 
             timer sortName;
             sort(good.begin(), good.end(), cmprName);
-            sort(bad.begin(), bad.end(), cmprName); 
+            sort(bad.begin(), bad.end(), cmprName);
             sortName.stop();
 
             timer out;
@@ -139,7 +138,7 @@ void Run(deque<stud>& good, deque<stud>& bad){
 
         Output2file(good, "Patenkinami.txt");
         Output2file(bad,  "Nepatenkinami.txt");
-        
+
         cout << "Nepatenkinami:\n";
         cout<<setw(18)<<std::left<<"Vardas"<<setw(18)<<std::left<<"Pavarde"<<"Galutinis (Vid.) / Galutinis (Med.)\n"<<"------------------------------------------------------------\n";
         for(stud& it : bad) cout << it;
@@ -171,7 +170,7 @@ void Run(list<stud>& good, list<stud>& bad){
 
             timer sortName;
             good.sort(cmprName);
-            bad.sort(cmprName); 
+            bad.sort(cmprName);
             sortName.stop();
 
             timer out;
@@ -187,11 +186,11 @@ void Run(list<stud>& good, list<stud>& bad){
         Pick(good, bad);
 
         good.sort(cmprName);
-        bad.sort(cmprName); 
-        
+        bad.sort(cmprName);
+
         Output2file(good, "Patenkinami.txt");
         Output2file(bad,  "Nepatenkinami.txt");
-        
+
         cout << "Nepatenkinami:\n";
         cout<<setw(18)<<std::left<<"Vardas"<<setw(18)<<std::left<<"Pavarde"<<"Galutinis (Vid.) / Galutinis (Med.)\n"<<"------------------------------------------------------------\n";
         for(stud& it : bad) cout << it;

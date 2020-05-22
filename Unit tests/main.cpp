@@ -46,6 +46,6 @@ TEST_CASE( "Ivesties ir rinkimo testas" ) {
     REQUIRE( aa.front().getMed()==bb.front().getMed() );
     REQUIRE( aa.front().getMed()==cc.front().getMed() );
 
-    REQUIRE( aa.back().getAvg() == 3.96f );
-    REQUIRE( c.back().getAvg() == 6.48f );
+    REQUIRE( aa.back().getAvg() == 2.89f );
+    REQUIRE( c.back().getAvg() == 6.89f );
 }
